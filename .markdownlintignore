@@ -1,0 +1,22 @@
+# Node.js 依赖
+node_modules/
+
+# 构建输出
+dist/
+build/
+.next/
+out/
+
+# 缓存文件
+.cache/
+.temp/
+*.log
+
+# IDE 配置
+.vscode/
+.idea/
+.cursor/
+
+# 其他
+coverage/
+.DS_Store

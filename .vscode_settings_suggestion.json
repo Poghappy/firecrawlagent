@@ -1,0 +1,31 @@
+{
+  "// 说明": "将以下配置复制到 ~/Library/Application Support/Cursor/User/settings.json",
+
+  "[python]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit"
+    },
+    "editor.tabSize": 4,
+    "editor.rulers": [88]
+  },
+
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+  "python.terminal.activateEnvironment": true,
+
+  "ruff.enable": true,
+  "ruff.nativeServer": true,
+  "ruff.lint.enable": true,
+  "ruff.format.enable": true,
+  "ruff.organizeImports": true,
+  "ruff.importStrategy": "fromEnvironment",
+
+  "python.languageServer": "Pylance",
+  "python.analysis.typeCheckingMode": "strict",
+
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": false,
+  "python.formatting.provider": "none"
+}

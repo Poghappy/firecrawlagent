@@ -1,0 +1,196 @@
+# FireShot 项目配置文件
+# Python 开发环境：Ruff + mypy + pytest
+
+[project]
+name = "fireshot"
+version = "1.0.0"
+description = "Firecrawl 云 API 最佳实践和 HawaiiHub 数据采集"
+authors = [{ name = "HawaiiHub AI Team" }]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "firecrawl-py>=1.0.0",
+    "python-dotenv>=1.0.0",
+    "requests>=2.31.0",
+    "pydantic>=2.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.1.9",
+    "mypy>=1.7.0",
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+    "types-requests>=2.31.0",
+]
+
+# ========================================
+# 🔥 Ruff 配置（格式化 + Linting）
+# ========================================
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+# 排除目录
+exclude = [
+    ".git",
+    ".venv",
+    "venv",
+    "__pycache__",
+    "build",
+    "dist",
+    "*.egg-info",
+    "logs",
+    "data",
+    ".steel",
+    "内容数据库",
+    "Firecrawl官方文档",
+]
+
+[tool.ruff.lint]
+# 启用的检查规则
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort (导入排序)
+    "B",   # flake8-bugbear (常见错误)
+    "C4",  # flake8-comprehensions (列表推导优化)
+    "UP",  # pyupgrade (Python 版本升级建议)
+    "SIM", # flake8-simplify (代码简化)
+]
+
+# 忽略的规则
+ignore = [
+    "E501",  # 行长度（由格式化器处理）
+    "B008",  # 函数调用在参数默认值（FastAPI 需要）
+    "B904",  # raise ... from err（简化错误处理）
+]
+
+# 每个文件允许的未使用导入
+per-file-ignores = { "__init__.py" = ["F401"], "test_*.py" = ["F401", "F811"] }
+
+[tool.ruff.format]
+# 格式化选项
+quote-style = "double"              # 强制双引号
+indent-style = "space"              # 使用空格缩进
+skip-magic-trailing-comma = false   # 保留尾随逗号
+line-ending = "auto"                # 自动检测行尾
+
+[tool.ruff.lint.isort]
+# 导入排序配置
+known-first-party = ["src", "scripts"]
+section-order = [
+    "future",
+    "standard-library",
+    "third-party",
+    "first-party",
+    "local-folder",
+]
+
+# ========================================
+# 🔍 mypy 配置（类型检查）
+# ========================================
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+disallow_untyped_defs = true
+disallow_any_unimported = false
+no_implicit_optional = true
+show_error_codes = true
+pretty = true
+
+# 忽略缺失的第三方库类型
+ignore_missing_imports = true
+
+# 排除目录
+exclude = [
+    "build/",
+    "dist/",
+    "venv/",
+    ".venv/",
+    "logs/",
+    "data/",
+]
+
+# 第三方库特殊配置
+[[tool.mypy.overrides]]
+module = "firecrawl.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "dotenv.*"
+ignore_missing_imports = true
+
+# 测试文件放宽限制
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_untyped_defs = false
+disallow_untyped_calls = false
+
+# ========================================
+# 🧪 pytest 配置（测试框架）
+# ========================================
+[tool.pytest.ini_options]
+# 测试目录和文件模式
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+
+# 测试选项
+addopts = [
+    "-v",                        # 详细输出
+    "--tb=short",                # 短错误追踪
+    "--color=yes",               # 彩色输出
+    "--strict-markers",          # 严格标记模式
+    # 覆盖率检查（当有 src 目录代码时启用）
+    # "--cov=src",
+    # "--cov-report=html",
+    # "--cov-report=term-missing",
+    # "--cov-fail-under=80",
+]
+
+# 标记定义
+markers = [
+    "slow: 标记慢速测试（需要网络请求）",
+    "integration: 标记集成测试（需要真实 API）",
+    "unit: 标记单元测试（不依赖外部资源）",
+]
+
+# 覆盖率配置
+[tool.coverage.run]
+source = ["src", "scripts"]
+omit = [
+    "*/tests/*",
+    "*/test_*.py",
+    "*/__pycache__/*",
+    "*/venv/*",
+    "*/.venv/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if __name__ == .__main__.:",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if TYPE_CHECKING:",
+    "@abstractmethod",
+]
+
+# ========================================
+# 📦 构建配置
+# ========================================
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["src"]
+
