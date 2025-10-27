@@ -1,7 +1,7 @@
 # 🎯 Cursor 配置和使用指南
 
-> **项目**: FireShot - Firecrawl 云 API 最佳实践  
-> **更新时间**: 2025-10-27  
+> **项目**: FireShot - Firecrawl 云 API 最佳实践
+> **更新时间**: 2025-10-27
 > **适用版本**: Cursor 最新版
 
 ---
@@ -80,21 +80,21 @@ FireShot/
 
 ### 三大符号系统
 
-| 符号 | 功能 | 示例 |
-|------|------|------|
-| `@` | 引用代码符号 | `@functionName` |
-| `#` | 引用文件 | `#src/app.py` |
-| `/` | 快捷命令 | `/generate`、`/refactor` |
+| 符号 | 功能         | 示例                     |
+| ---- | ------------ | ------------------------ |
+| `@`  | 引用代码符号 | `@functionName`          |
+| `#`  | 引用文件     | `#src/app.py`            |
+| `/`  | 快捷命令     | `/generate`、`/refactor` |
 
 ### 核心快捷键
 
-| 快捷键 | 功能 |
-|--------|------|
-| `Cmd+I` | 打开 Agent |
-| `Cmd+K` | 行内编辑 |
+| 快捷键  | 功能               |
+| ------- | ------------------ |
+| `Cmd+I` | 打开 Agent         |
+| `Cmd+K` | 行内编辑           |
 | `Cmd+L` | 新聊天（选中代码） |
-| `Cmd+T` | 新标签页 |
-| `Cmd+/` | 切换模型 |
+| `Cmd+T` | 新标签页           |
+| `Cmd+/` | 切换模型           |
 
 ---
 
@@ -136,6 +136,7 @@ cat .env | grep FIRECRAWL_API_KEY
 **症状**: 在 Agent 中输入 `/` 没有弹出命令列表
 
 **解决方案**:
+
 1. ✅ 确保在 Agent 聊天框（`Cmd+I`）
 2. ✅ 输入 `/` 后稍等 1-2 秒
 3. ✅ 检查 Cursor 版本是否最新
@@ -145,6 +146,7 @@ cat .env | grep FIRECRAWL_API_KEY
 ### Q2: @ 符号无法引用代码？
 
 **解决方案**:
+
 1. 等待代码库索引完成（右下角状态栏）
 2. 检查 `.cursorignore` 是否排除了文件
 3. 尝试重建索引：`Cmd+Shift+P` → "Rebuild Codebase Index"
@@ -152,6 +154,7 @@ cat .env | grep FIRECRAWL_API_KEY
 ### Q3: Agent 响应慢？
 
 **解决方案**:
+
 1. 查看 settings.json 中的优化配置
 2. 检查 API 配额
 3. 尝试切换模型 (`Cmd+/`)

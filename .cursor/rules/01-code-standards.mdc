@@ -1,0 +1,224 @@
+---
+description: '代码质量规范 - JavaScript/Markdown 编码标准'
+globs: '**/*.{js,ts,md,json}'
+priority: 800
+---
+
+# 代码质量规范
+
+## JavaScript/Node.js 规范
+
+### 代码风格
+
+```javascript
+// ✅ 正确示例
+const fetchData = async (url) => {
+  try {
+    const response = await fetch(url);
+    return response.json();
+  } catch (error) {
+    console.error('❌ 错误:', error);
+    throw error;
+  }
+};
+```
+
+**规范要点**:
+
+- **缩进**: 2 空格（必须）
+- **引号**: 单引号 `'string'`
+- **分号**: 必须使用 `;`
+- **命名**: 驼峰命名法 `camelCase`
+- **注释**: 简体中文 + JSDoc
+- **错误处理**: 完整的 try-catch
+- **日志**: 使用 Emoji（✅❌⚠️）
+
+### 异步处理
+
+```javascript
+// ✅ 使用 async/await
+async function processData() {
+  const data = await fetchData();
+  return processResult(data);
+}
+
+// ❌ 避免回调地狱
+fetchData(function (data) {
+  processData(data, function (result) {
+    // 嵌套过深
+  });
+});
+```
+
+## Markdown 文档规范
+
+> 详细示例与反例请参考 [markdown-guide.md](mdc:../markdown-guide.md)。
+
+### 文档结构
+
+```markdown
+# 文档标题（每个文件只有 1 个一级标题）
+
+## 二级标题
+
+### 三级标题
+
+#### 四级标题
+```
+
+**结构要点**：
+
+- **一级标题唯一性**：每个文档只能有 1 个 `#` 标题（MD025）
+- **标题层级连续**：不要跳级（`##` → `###` → `####`，避免 `##` 直接跳到 `####`）
+- **标题间距**：同级标题之间保持一个空行，标题下方必须有正文或子标题
+- **章节分割**：长文档使用 `---` 分割章节时，前后各保留一个空行（MD031）
+- **标题格式**：标题后不要有标点符号（MD026，如 `# 标题！` 改为 `# 标题`）
+
+### 列表与段落
+
+**无序列表**：
+
+- ✅ 统一使用 `-` 作为符号（不要混用 `*`、`+`）
+- ✅ 列表前后必须保留空行（MD032）
+- ✅ 列表项之间不要插入空行
+- ✅ 子列表缩进 2 个空格
+
+**有序列表**：
+
+- ✅ 使用连续数字（`1. 2. 3.`）或全部使用 `1.`（MD029）
+- ✅ 列表项编号风格保持一致
+
+**段落要求**：
+
+- ✅ 列表后若紧接段落，需要空一行
+- ✅ 段落之间保持一个空行
+- ✅ 避免连续两行空行（MD012）
+
+### 代码块要求
+
+````markdown
+```bash
+# ✅ 每个代码块都必须显式指定语言（MD040）
+npm run task
+```
+
+```text
+# ✅ 没有合适语言时使用 text
+纯文本内容
+```
+
+```javascript
+// ✅ 常用语言标识符
+const data = await fetch(url);
+```
+````
+
+**代码块规范**：
+
+- ✅ 所有代码块必须有语言标识符（MD040，最常见错误）
+- ✅ 代码块前后各保留一个空行（MD031）
+- ✅ 同一文档中语言标识保持一致（如 `bash` vs `sh`，选一个）
+- ✅ 常用标识符：`bash`、`javascript`、`json`、`markdown`、`text`
+
+### 链接与引用
+
+**内部链接**：
+
+```markdown
+✅ [文档名称](mdc:../path/to/file.md)
+✅ [锚点链接](#章节标题) // 不要包含 emoji
+❌ [错误链接](#🔍-故障排查) // emoji 会导致 MD051 错误
+```
+
+**外部链接**：
+
+```markdown
+✅ [GitHub](https://github.com)
+❌ https://github.com // 避免裸链接（MD034）
+```
+
+### 表格格式
+
+```markdown
+| 列1 | 列2 | 列3 |
+| --- | --- | --- |
+| 值1 | 值2 | 值3 |
+```
+
+**表格规范**：
+
+- ✅ 表格前后保留空行
+- ✅ 对齐符号统一（全部左对齐 `|---|` 或居中 `|:--:|`）
+- ✅ 单元格内容前后留空格（提高可读性）
+
+### 其他格式要求
+
+- **强调不作标题**：不要用 `**粗体**` 代替标题（MD036）
+- **文件结尾**：保留单个空行（自动处理）
+- **行尾空格**：删除多余空格（自动处理）
+- **中文排版**：中英文之间加空格（提高可读性）
+
+### 📋 Markdown QA Checklist（AI 生成前必查）
+
+在 Cursor Chat 输出 Markdown 文档前，快速对照以下 6 项：
+
+1. ✅ **标题检查**：一级标题只有一个且无跳级（`##` → `###`）
+2. ✅ **代码块检查**：所有代码块都带语言标识符（无裸 ` ``` `）
+3. ✅ **空行检查**：列表、代码块、表格前后均有空行
+4. ✅ **格式检查**：无连续空行，文末保留单个换行
+5. ✅ **链接检查**：内部链接使用 `mdc:`，锚点不含 emoji
+6. ✅ **Linter 检查**：在心里默念"我会运行 `npx markdownlint "**/*.md"`"
+
+> **重要**：以上 6 项是最容易出错的规则，遵守可避免 **90%** 的 Markdown lint 报错。
+>
+> 详细说明与错误示例请查看 [markdown-guide.md](mdc:../markdown-guide.md)。
+
+## Package.json 规范
+
+```json
+{
+  "name": "project-name",
+  "version": "1.0.0",
+  "description": "项目描述",
+  "scripts": {
+    "dev": "node index.js",
+    "scrape:news": "node scripts/scrape-news.js",
+    "test:api": "node tests/api-test.js"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "dependencies": {
+    "express": "^4.18.0"
+  }
+}
+```
+
+**规范要点**:
+
+- **版本号**: 使用 `^` 符号
+- **Scripts**: 使用 `:` 分隔命名空间
+- **Node.js**: >= 16.0.0
+- **必填字段**: name, version, description, license
+
+## Git Commit 规范
+
+```bash
+# ✅ 正确格式
+feat: 添加新闻采集功能
+fix: 修复登录超时问题
+docs: 更新 README 文档
+refactor: 重构审核逻辑
+chore: 更新依赖版本
+
+# ❌ 错误格式
+更新代码
+修复bug
+添加功能
+```
+
+**规范要点**:
+
+- 使用类型前缀（feat/fix/docs/refactor/chore）
+- 简体中文描述
+- 简洁明了（< 50 字）

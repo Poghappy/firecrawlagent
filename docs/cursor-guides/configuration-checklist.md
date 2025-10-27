@@ -1,7 +1,7 @@
 # ✅ Cursor 配置检查清单
 
-> **用途**: 快速验证 Cursor 配置是否正确  
-> **时间**: 5-10 分钟  
+> **用途**: 快速验证 Cursor 配置是否正确
+> **时间**: 5-10 分钟
 > **更新**: 2025-10-27
 
 ---
@@ -17,10 +17,12 @@
 ### 1️⃣ Cursor 编辑器
 
 - [ ] **Cursor 已安装**
+
   ```bash
   # 检查版本
   打开 Cursor → Cmd+Shift+P → 输入 "About"
   ```
+
   - ✅ 版本 ≥ 0.40.0
 
 - [ ] **Cursor 已登录**
@@ -36,16 +38,20 @@
 ### 2️⃣ 主配置文件
 
 - [ ] **`.cursorrules` 文件存在**
+
   ```bash
   ls -lh /Users/zhiledeng/Downloads/FireShot/.cursorrules
   ```
+
   - ✅ 文件存在
   - ✅ 大小 > 10 KB
 
 - [ ] **`.cursorrules` 内容正确**
+
   ```bash
   head -20 .cursorrules
   ```
+
   应该包含:
   - ✅ Firecrawl 规范
   - ✅ Python 规范
@@ -55,6 +61,7 @@
   ```bash
   grep -E "\.env|node_modules|__pycache__" .gitignore
   ```
+
   - ✅ 包含 `.env`
   - ✅ 包含 `node_modules`
   - ✅ 包含 `__pycache__`
@@ -64,12 +71,14 @@
 ### 3️⃣ VSCode/Cursor Settings
 
 - [ ] **settings.json 位置正确**
+
   ```bash
   ls ~/Library/Application\ Support/Cursor/User/settings.json
   ```
 
 - [ ] **AI 工具自动授权已启用**
-  打开 settings.json，检查:
+      打开 settings.json，检查:
+
   ```json
   "ai.autoApproveToolCalls": true,
   "ai.autoApproveReadOperations": true,
@@ -77,6 +86,7 @@
   ```
 
 - [ ] **Python 配置正确**
+
   ```json
   "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
   "ruff.enable": true,
@@ -96,14 +106,17 @@
 ### 4️⃣ 环境变量
 
 - [ ] **`.env` 文件存在**
+
   ```bash
   ls -lh .env
   ```
 
 - [ ] **Firecrawl API 密钥配置**
+
   ```bash
   grep FIRECRAWL_API_KEY .env
   ```
+
   应该有:
   - ✅ `FIRECRAWL_API_KEY=fc-xxx`
   - ✅ `FIRECRAWL_API_KEY_BACKUP_1=fc-xxx`（可选）
@@ -112,6 +125,7 @@
   ```bash
   python3 test_api_keys.py
   ```
+
   - ✅ 主密钥测试通过
   - ✅ 返回 > 1000 字符
 
@@ -120,12 +134,14 @@
 ### 5️⃣ MCP 服务器
 
 - [ ] **MCP 配置文件存在**
+
   ```bash
   cat ~/Library/Application\ Support/Cursor/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json
   ```
 
 - [ ] **Firecrawl MCP 服务器配置**
-  应该包含:
+      应该包含:
+
   ```json
   {
     "mcpServers": {
@@ -141,10 +157,11 @@
   ```
 
 - [ ] **MCP 服务器可用**
-  在 Cursor Agent 中测试:
+      在 Cursor Agent 中测试:
   ```markdown
   Cmd+I → 输入: "使用 Firecrawl 爬取 https://example.com"
   ```
+
   - ✅ Agent 能调用 `mcp_firecrawl_firecrawl_scrape` 工具
 
 ---
@@ -160,7 +177,7 @@
   - ✅ 显示命令列表
 
 - [ ] **常用命令测试**
-  尝试以下命令:
+      尝试以下命令:
   - [ ] `/generate` - 代码生成
   - [ ] `/refactor` - 代码重构
   - [ ] `/explain` - 代码解释
@@ -171,15 +188,19 @@
 ### 7️⃣ 符号引用
 
 - [ ] **@ 符号可用**
+
   ```markdown
   Cmd+I → 输入: @
   ```
+
   - ✅ 显示代码符号列表（函数、类）
 
 - [ ] **# 符号可用**
+
   ```markdown
   Cmd+I → 输入: #
   ```
+
   - ✅ 显示文件列表
 
 - [ ] **代码库索引完成**
@@ -191,9 +212,11 @@
 ### 8️⃣ Agent 功能
 
 - [ ] **Agent 响应正常**
+
   ```markdown
   Cmd+I → 输入: "Hello, 帮我生成一个 Python 函数"
   ```
+
   - ✅ Agent 返回代码
   - ✅ 使用简体中文回复
   - ✅ 响应时间 < 10 秒
@@ -228,7 +251,7 @@
 ### 🔟 Tab 自动补全
 
 - [ ] **Tab 补全启用**
-  在任意 Python 文件中:
+      在任意 Python 文件中:
   1. 开始输入代码
   2. 等待 1-2 秒
   - ✅ 显示灰色补全建议
@@ -245,11 +268,13 @@
 ### 1️⃣1️⃣ 必需扩展
 
 - [ ] **Python 扩展已安装**
+
   ```
   ms-python.python
   ```
 
 - [ ] **Ruff 扩展已安装**
+
   ```
   charliermarsh.ruff
   ```
@@ -273,9 +298,11 @@
 ### 1️⃣3️⃣ Python 版本
 
 - [ ] **Python 版本正确**
+
   ```bash
   python3 --version
   ```
+
   - ✅ Python ≥ 3.11
 
 - [ ] **pip 可用**
@@ -286,15 +313,18 @@
 ### 1️⃣4️⃣ Python 包
 
 - [ ] **Firecrawl SDK 已安装**
+
   ```bash
   pip3 list | grep firecrawl
   ```
+
   - ✅ `firecrawl-py`
 
 - [ ] **必需包已安装**
   ```bash
   pip3 list | grep -E "pydantic|pytest|ruff"
   ```
+
   - ✅ pydantic
   - ✅ pytest
   - ✅ ruff
@@ -306,6 +336,7 @@
 ### 1️⃣5️⃣ 性能设置
 
 - [ ] **代码库索引优化**
+
   ```json
   "files.watcherExclude": {
     "**/node_modules/**": true,
@@ -328,8 +359,8 @@
 ### 完成统计
 
 - **总项目数**: 60+
-- **已完成**: _____ / 60+
-- **完成率**: _____ %
+- **已完成**: **\_** / 60+
+- **完成率**: **\_** %
 
 ### 状态判断
 
@@ -396,4 +427,3 @@ Cursor → Extensions → 搜索 "Ruff" → 确保已启用
 ---
 
 **提示**: 定期（每周）运行此检查清单，确保配置持续正确 ✅
-

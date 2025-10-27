@@ -1,0 +1,562 @@
+{
+  "editor.accessibilitySupport": "on",
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false,
+    "typescriptreact": true
+  },
+  "augment.chat.userGuidelines": "始终中文输出.",
+  "redhat.telemetry.enabled": true,
+  "vs-kubernetes": {
+    "vscode-kubernetes.kubectl-path-mac": "/Users/zhiledeng/.vs-kubernetes/tools/kubectl/kubectl",
+    "vscode-kubernetes.helm-path-mac": "/Users/zhiledeng/.vs-kubernetes/tools/helm/darwin-arm64/helm",
+    "vscode-kubernetes.minikube-path-mac": "/Users/zhiledeng/.vs-kubernetes/tools/minikube/darwin-arm64/minikube"
+  },
+  "chat.tools.terminal.autoApprove": {
+    "git rev-parse": true,
+    "true": true,
+    "sed": true,
+    "git ls-files": true,
+    "cd ~/Documents/augment-projects/N8N-自动化 && git rm -r --cached . || true && git add -A && git status --porcelain=v1 --branch | sed -n '1,200p' && git ls-files | wc -l && git ls-files --others --exclude-standard | wc -l": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "cd ~/Documents/augment-projects/N8N-自动化 && git reset --mixed HEAD || true && git rm -r --cached . || true && git add . && git status --porcelain=v1 --branch | sed -n '1,200p' && echo '--- tracked files ---' && git ls-files | wc -l && echo '--- untracked (not ignored) ---' && git ls-files --others --exclude-standard | wc -l && echo '--- ignored (count) ---' && (git ls-files --others --ignored --exclude-standard | wc -l)": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "cd ~/Documents/augment-projects/N8N-自动化 && git add --renormalize . && git status --porcelain=v1 --branch | sed -n '1,200p' && git commit -m \"chore: normalize line endings to LF\" || true && echo '--- after normalize commit status ---' && git status --porcelain=v1 --branch | sed -n '1,200p' && git ls-files | wc -l": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "git remote -v": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "cd /Users/zhiledeng/Documents/cursor/packages/shared && npm run build --silent || true": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "cd /Users/zhiledeng/Documents/cursor/packages/bytebot-agent-cc && npm run build --silent": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "cd /Users/zhiledeng/Documents/cursor/packages/bytebot-ui && npm run build --silent": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "npm run build": true,
+    "cp": true,
+    "git config": true,
+    "cd /Users/zhiledeng/Documents/cursor && git rev-parse --is-inside-work-tree && git branch --show-current && git status --porcelain && git config user.name --get || true && git config user.email --get || true && git remote -v || true && gh --version || true && gh auth status || true": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "cd /Users/zhiledeng/Documents/augment-projects/hawaiihub-admin-agent && npm run scrape:news": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "cd /Users/zhiledeng/Documents/augment-projects/hawaiihub-admin-agent && node scripts/test-steel-browser.js": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "cd /Users/zhiledeng/Documents/augment-projects/hawaiihub-admin-agent && node utils/hawaii-time.js": {
+      "approve": true,
+      "matchCommandLine": true
+    }
+  },
+  "yaml.schemas": {
+    "file:///Users/zhiledeng/.vscode/extensions/continue.continue-1.2.8-darwin-arm64/config-yaml-schema.json": [
+      ".continue/**/*.yaml"
+    ]
+  },
+  "mssql.connectionGroups": [
+    {
+      "name": "ROOT",
+      "id": "7F929455-BAF5-463F-BB07-8AA327B1364B"
+    }
+  ],
+  "chat.instructionsFilesLocations": {
+    ".github/instructions": true,
+    "/var/folders/kc/85hc9t7s0vx16qll7c3z5_k00000gn/T/postman-collections-post-response.instructions.md": true,
+    "/var/folders/kc/85hc9t7s0vx16qll7c3z5_k00000gn/T/postman-collections-pre-request.instructions.md": true,
+    "/var/folders/kc/85hc9t7s0vx16qll7c3z5_k00000gn/T/postman-folder-post-response.instructions.md": true,
+    "/var/folders/kc/85hc9t7s0vx16qll7c3z5_k00000gn/T/postman-folder-pre-request.instructions.md": true,
+    "/var/folders/kc/85hc9t7s0vx16qll7c3z5_k00000gn/T/postman-http-request-post-response.instructions.md": true,
+    "/var/folders/kc/85hc9t7s0vx16qll7c3z5_k00000gn/T/postman-http-request-pre-request.instructions.md": true
+  },
+  "vscode-openai.serviceProvider": "VSCode-OpenAI",
+  "vscode-openai.baseUrl": "https://api.arbs.io/openai/inference/v1",
+  "vscode-openai.defaultModel": "gpt-4o-mini-2024-07-18",
+  "vscode-openai.azureDeployment": "gpt-4o",
+  "vscode-openai.scmModel": "gpt-4o-mini-2024-07-18",
+  "vscode-openai.scmDeployment": "gpt-4o",
+  "vscode-openai.embeddingModel": "text-embedding-ada-002",
+  "vscode-openai.embeddingsDeployment": "text-embedding-ada-002",
+  "vscode-openai.azureApiVersion": "2024-06-01",
+  "chatgpt.openOnStartup": true,
+  "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
+  "workbench.settings.applyToAllProfiles": ["CodeMoss.code"],
+  "chatgpt.cliExecutable": "",
+  "cursor.cpp.disabledLanguages": ["plaintext", "markdown", "scminput"],
+  "database-client.autoSync": true,
+  "codex.enabled": true,
+  "codex.model": "gpt-4o-mini-2024-07-18",
+  "codex.provider": "openai",
+  "codex.apiBaseUrl": "https://api.openai.com/v1",
+  "codex.apiKey": "YOUR_OPENAI_API_KEY",
+
+  // ========================================
+  // 🚀 性能优化配置
+  // ========================================
+
+  // 文件监控优化
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/.hg/store/**": true,
+    "**/.vscode/**": true,
+    "**/dist/**": true,
+    "**/build/**": true,
+    "**/.next/**": true,
+    "**/out/**": true,
+    "**/.DS_Store": true,
+    "**/coverage/**": true,
+    "**/.turbo/**": true,
+    // HawaiiHub 专用排除
+    "**/logs/**": true,
+    "**/.steel/**": true,
+    "**/内容数据库/**": true,
+    "**/Firecrawl官方文档/**": true,
+    "**/hawaiihub.net 真实部署克隆源码/**": true,
+    "**/hawaiihub运营团队参考资料/**": true
+  },
+
+  // 文件搜索排除
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true,
+    "**/.next": true,
+    "**/dist": true,
+    "**/build": true
+  },
+
+  // 搜索性能优化
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/.git": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/coverage": true,
+    "**/.next": true,
+    "**/out": true
+  },
+  "search.followSymlinks": false,
+  "search.smartCase": true,
+  "search.useIgnoreFiles": true,
+
+  // 内存管理
+  "files.autoSave": "onFocusChange",
+  "files.autoSaveDelay": 1000,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+
+  // ========================================
+  // 💅 代码自动格式化
+  // ========================================
+
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit",
+    "source.addMissingImports": "explicit"
+  },
+
+  // 各语言格式化器
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[markdown]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": {
+      "comments": "on",
+      "strings": "on",
+      "other": "on"
+    }
+  },
+  "[python]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+
+  // ========================================
+  // 🤖 AI 响应速度优化
+  // ========================================
+
+  // Cursor 特定优化
+  "cursor.general.enableShadowWorkspace": true,
+  "cursor.general.enableAutocompletions": true,
+  "cursor.chat.alwaysSearchWeb": false,
+  "cursor.cpp.enablePartialAccepts": true,
+
+  // AI 提示延迟优化
+  "editor.quickSuggestionsDelay": 10,
+  "editor.suggestOnTriggerCharacters": true,
+  "editor.acceptSuggestionOnCommitCharacter": true,
+  "editor.acceptSuggestionOnEnter": "on",
+
+  // IntelliSense 性能
+  "editor.suggest.preview": true,
+  "editor.suggest.showInlineDetails": true,
+  "editor.suggest.shareSuggestSelections": true,
+  "editor.suggest.localityBonus": true,
+
+  // ========================================
+  // ⚡ Cursor Tab 自动补全优化
+  // ========================================
+
+  "editor.tabCompletion": "on",
+  "editor.inlineSuggest.enabled": true,
+  "editor.inlineSuggest.showToolbar": "always",
+  "editor.suggestSelection": "first",
+  "editor.wordBasedSuggestions": "matchingDocuments",
+  "editor.wordBasedSuggestionsMode": "matchingDocuments",
+
+  // Tab 补全细节优化
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": true,
+
+  // 补全体验优化
+  "editor.snippetSuggestions": "top",
+  "editor.suggest.insertMode": "replace",
+  "editor.suggest.snippetsPreventQuickSuggestions": false,
+
+  // ========================================
+  // 🔀 Git 集成优化
+  // ========================================
+
+  "git.enabled": true,
+  "git.autofetch": true,
+  "git.autofetchPeriod": 180,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "git.enableCommitSigning": false,
+  "git.postCommitCommand": "none",
+  "git.showPushSuccessNotification": true,
+
+  // Git 性能优化
+  "git.detectSubmodules": true,
+  "git.detectSubmodulesLimit": 10,
+  "git.scanRepositories": ["/Users/zhiledeng/Documents/augment-projects"],
+
+  // Git 编辑器配置
+  "git.inputValidationLength": 72,
+  "git.inputValidationSubjectLength": 50,
+  "git.useCommitInputAsStashMessage": true,
+
+  // Diff 优化
+  "diffEditor.ignoreTrimWhitespace": false,
+  "diffEditor.renderSideBySide": true,
+  "diffEditor.maxComputationTime": 5000,
+
+  // ========================================
+  // 🖥️ 终端体验优化
+  // ========================================
+
+  "terminal.integrated.fontSize": 13,
+  "terminal.integrated.fontFamily": "MesloLGS NF, Menlo, Monaco, 'Courier New', monospace",
+  "terminal.integrated.lineHeight": 1.2,
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.cursorStyle": "line",
+
+  // 终端行为优化
+  "terminal.integrated.enableMultiLinePasteWarning": "auto",
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.scrollback": 10000,
+  "terminal.integrated.smoothScrolling": true,
+
+  // 终端性能优化
+  "terminal.integrated.gpuAcceleration": "on",
+  "terminal.integrated.fastScrollSensitivity": 5,
+  "terminal.integrated.mouseWheelScrollSensitivity": 1,
+
+  // Shell 集成
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.shellIntegration.enabled": true,
+  "terminal.integrated.shellIntegration.decorationsEnabled": "both",
+
+  // 终端外观
+  "terminal.integrated.tabs.enabled": true,
+  "terminal.integrated.tabs.showActiveTerminal": "singleTerminalOrNarrow",
+  "terminal.integrated.tabs.location": "right",
+
+  // ========================================
+  // 📝 额外编辑器优化
+  // ========================================
+
+  // 编辑器性能
+  "editor.minimap.enabled": true,
+  "editor.minimap.maxColumn": 120,
+  "editor.renderWhitespace": "selection",
+  "editor.renderControlCharacters": false,
+  "editor.smoothScrolling": true,
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorSmoothCaretAnimation": "on",
+
+  // 代码镜头
+  "editor.codeLens": true,
+  "diffEditor.codeLens": true,
+
+  // 括号对
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+
+  // 文件关联
+  "files.associations": {
+    "*.mdc": "markdown",
+    "*.json": "jsonc",
+    ".cursorrules": "markdown",
+    ".codexrc": "json",
+    "**/config/*.json": "jsonc",
+    "**/n8n工作流/*.json": "json",
+    "**/任务/*.md": "markdown",
+    "**/文档/*.md": "markdown"
+  },
+
+  // Workbench 性能
+  "workbench.list.smoothScrolling": true,
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.closeEmptyGroups": true,
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.startupEditor": "welcomePage",
+
+  // 窗口性能
+  "window.restoreWindows": "all",
+  "window.newWindowDimensions": "inherit",
+  "window.title": "${dirty}${activeEditorShort}${separator}${rootName}",
+
+  // ========================================
+  // 🎨 外观优化
+  // ========================================
+
+  "editor.fontSize": 13,
+  "editor.lineHeight": 1.6,
+  "editor.fontLigatures": true,
+  "editor.fontFamily": "'SF Mono', Menlo, Monaco, 'Courier New', monospace",
+
+  // 语义高亮
+  "editor.semanticHighlighting.enabled": true,
+  "editor.semanticTokenColorCustomizations": {
+    "enabled": true
+  },
+
+  // ========================================
+  // 🔤 拼写检查配置
+  // ========================================
+
+  // 禁用 JSON 文件的拼写检查
+  "cSpell.enableFiletypes": ["!json", "!jsonc"],
+
+  // 添加自定义词汇到字典
+  "cSpell.userWords": [
+    "cursorrules",
+    "codexrc",
+    "codex",
+    "openai",
+    "apikey",
+    "vscode",
+    "jsonc",
+    "minimap",
+    "workbench",
+    "gitignore",
+    "uncommitted",
+    "uncommit",
+    "autofetch",
+    "autosave",
+    "Copilot",
+    "ESLint",
+    "Prettier",
+    "TSLint",
+    "Linter",
+    "augment",
+    "hawaiihub",
+    "zhiledeng",
+    // HawaiiHub 专用词汇
+    "newsapi",
+    "firecrawl",
+    "puppeteer",
+    "supabase",
+    "vercel",
+    "groupon",
+    "yelp",
+    "craigslist",
+    "mdx",
+    "prisma",
+    "kumanyun",
+    "firebird",
+    "postgresql",
+    "cloudflare"
+  ],
+
+  // 在 settings.json 中禁用拼写检查
+  "cSpell.diagnosticLevel": "Hint",
+
+  // 完全禁用拼写检查（可选）
+  "cSpell.enabled": false,
+
+  // ========================================
+  // 🤖 AI 工具自动授权配置（全局）
+  // ========================================
+
+  // 自动批准所有工具调用
+  "ai.autoApproveToolCalls": true,
+
+  // 自动批准读取操作
+  "ai.autoApproveReadOperations": true,
+
+  // 自动批准浏览器操作
+  "ai.autoApproveBrowserOperations": true,
+
+  // 自动批准文件操作（读取）
+  "ai.autoApproveFileOperations": true,
+
+  // 自动批准搜索操作
+  "ai.autoApproveSearchOperations": true,
+
+  // 工具级别自动授权
+  "ai.toolCallApproval": {
+    // ========================================
+    // 🌐 浏览器工具（MCP Browser）
+    // ========================================
+    "browser_navigate": "auto",
+    "browser_snapshot": "auto",
+    "browser_click": "auto",
+    "browser_type": "auto",
+    "browser_screenshot": "auto",
+    "browser_hover": "auto",
+    "browser_wait_for": "auto",
+    "browser_press_key": "auto",
+    "browser_drag": "auto",
+    "browser_console_messages": "auto",
+    "browser_select_option": "auto",
+
+    // ========================================
+    // 📁 文件读取工具
+    // ========================================
+    "read_file": "auto",
+    "list_dir": "auto",
+    "glob_file_search": "auto",
+
+    // ========================================
+    // 🔍 搜索工具
+    // ========================================
+    "grep": "auto",
+    "codebase_search": "auto",
+
+    // ========================================
+    // 🌐 Web 搜索和采集（MCP Firecrawl）
+    // ========================================
+    "mcp_firecrawl_firecrawl_search": "auto",
+    "mcp_firecrawl_firecrawl_scrape": "auto",
+    "mcp_firecrawl_firecrawl_map": "auto",
+    "mcp_firecrawl_firecrawl_crawl": "auto",
+    "mcp_firecrawl_firecrawl_extract": "auto",
+    "mcp_firecrawl_firecrawl_check_crawl_status": "auto",
+
+    // ========================================
+    // 🕐 时间工具（MCP Time）
+    // ========================================
+    "mcp_time_get_current_time": "auto",
+    "mcp_time_convert_time": "auto",
+
+    // ========================================
+    // 📚 文档查询（MCP Context7）
+    // ========================================
+    "mcp_Context7_resolve-library-id": "auto",
+    "mcp_Context7_get-library-docs": "auto",
+
+    // ========================================
+    // 🗄️ 数据库操作（MCP Convex）- 只读操作
+    // ========================================
+    "mcp_Convex_status": "auto",
+    "mcp_Convex_data": "auto",
+    "mcp_Convex_tables": "auto",
+    "mcp_Convex_functionSpec": "auto",
+    "mcp_Convex_logs": "auto",
+    "mcp_Convex_envList": "auto",
+    "mcp_Convex_envGet": "auto",
+    "mcp_Convex_runOneoffQuery": "auto",
+
+    // ========================================
+    // 📊 数据分析（MCP Tinybird）
+    // ========================================
+    "mcp_Tinybird_explore_data": "auto",
+    "mcp_Tinybird_text_to_sql": "auto",
+    "mcp_Tinybird_list_endpoints": "auto",
+    "mcp_Tinybird_list_datasources": "auto",
+    "mcp_Tinybird_execute_query": "auto",
+    "mcp_Tinybird_list_service_datasources": "auto",
+
+    // ========================================
+    // 🔧 其他只读工具
+    // ========================================
+    "read_lints": "auto",
+    "list_mcp_resources": "auto",
+    "web_search": "auto"
+  },
+
+  // 危险操作仍需手动确认（安全保护）
+  "ai.dangerousOperationsRequireApproval": true,
+
+  // 定义危险操作列表
+  "ai.dangerousOperations": [
+    "delete_file",
+    "run_terminal_cmd",
+    "search_replace",
+    "write",
+    "edit_notebook",
+    "mcp_Convex_run",
+    "mcp_Convex_envSet",
+    "mcp_Convex_envRemove"
+  ]
+}
