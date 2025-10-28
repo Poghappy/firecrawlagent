@@ -484,6 +484,7 @@ FIRECRAWL_TIMEOUT=60
 ### 核心文档
 
 - **OpenSpec 项目规范**: `openspec/project.md`
+- **Git Hooks 规范**: `docs/GIT_HOOKS_SPECIFICATION.md` 🆕
 - **SDK 配置总结**: `SDK_CONFIGURATION_COMPLETE.md`
 - **快速参考**: `QUICK_REFERENCE.md`
 - **性能优化报告**: `CURSOR_性能优化完成报告_2025-10-28.md`
@@ -499,6 +500,8 @@ FIRECRAWL_TIMEOUT=60
 - OpenSpec 官网: https://openspec.dev/
 - Firecrawl 文档: https://docs.firecrawl.dev/
 - NewsAPI 文档: https://newsapi.org/docs
+- Husky（Git Hooks）: https://typicode.github.io/husky/
+- Conventional Commits: https://www.conventionalcommits.org/zh-hans/
 
 ---
 

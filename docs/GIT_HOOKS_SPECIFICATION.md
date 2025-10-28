@@ -1,8 +1,8 @@
 # Git Hooks 规范
 
-**版本**: v1.0.0  
-**更新时间**: 2025-10-28  
-**适用项目**: FireShot + HawaiiHub  
+**版本**: v1.0.0
+**更新时间**: 2025-10-28
+**适用项目**: FireShot + HawaiiHub
 **维护者**: HawaiiHub AI Team
 
 ---
@@ -96,13 +96,13 @@ STAGED_PY_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.py$'
 
 if [ -n "$STAGED_PY_FILES" ]; then
     echo "${YELLOW}📝 运行类型检查...${NC}"
-    
+
     # 使用 mypy 进行严格类型检查
     if ! python3 -m mypy --strict $STAGED_PY_FILES; then
         echo "${RED}❌ 类型检查失败！请修复类型错误。${NC}"
         exit 1
     fi
-    
+
     echo "${GREEN}✅ 类型检查通过${NC}"
 fi
 
@@ -302,19 +302,19 @@ echo "${GREEN}✅ 所有测试通过${NC}"
 # 4. 安全漏洞扫描（可选，需要安装 bandit）
 if command -v bandit &> /dev/null; then
     echo "${YELLOW}🔒 运行安全扫描...${NC}"
-    
+
     if ! bandit -r src/ -ll -q; then
         echo "${RED}❌ 发现安全漏洞！请修复后再推送。${NC}"
         exit 1
     fi
-    
+
     echo "${GREEN}✅ 安全扫描通过${NC}"
 fi
 
 # 5. 依赖漏洞检查（可选，需要安装 pip-audit）
 if command -v pip-audit &> /dev/null; then
     echo "${YELLOW}📦 检查依赖安全性...${NC}"
-    
+
     if ! pip-audit --require-hashes --disable-pip; then
         echo "${YELLOW}⚠️  警告：发现依赖漏洞，建议更新${NC}"
         # 不阻止推送，仅警告
@@ -630,7 +630,6 @@ git push --no-verify
 
 ---
 
-**维护者**: HawaiiHub AI Team  
-**版本**: v1.0.0  
+**维护者**: HawaiiHub AI Team
+**版本**: v1.0.0
 **最后更新**: 2025-10-28
-

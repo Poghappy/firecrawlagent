@@ -49,4 +49,3 @@ updates:
       - "github-actions"
     commit-message:
       prefix: "chore(deps)"
-
