@@ -19,7 +19,7 @@ jobs:
 
     steps:
     - name: 检出代码
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: 设置 Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
@@ -65,7 +65,7 @@ jobs:
 
     steps:
     - name: 检出代码
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: 设置 Node.js
       uses: actions/setup-node@v4
@@ -94,7 +94,7 @@ jobs:
 
     steps:
     - name: 检出代码
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: 设置 Python
       uses: actions/setup-python@v5
@@ -124,7 +124,7 @@ jobs:
 
     steps:
     - name: 检出代码
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: 检查必需文档
       run: |
@@ -161,7 +161,7 @@ jobs:
 
     steps:
     - name: 检出代码
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: 检查根目录 Markdown 文件数量
       run: |
