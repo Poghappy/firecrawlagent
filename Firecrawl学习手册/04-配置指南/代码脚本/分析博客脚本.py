@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""
-分析 Firecrawl 博客内容
+"""分析 Firecrawl 博客内容
 
 提取所有文章的标题、作者、日期、URL 等结构化数据
 """
@@ -9,6 +8,7 @@ import json
 import re
 from collections import defaultdict
 from datetime import datetime
+
 
 # 从 MCP 工具返回的 markdown 内容
 MARKDOWN_CONTENT = """We just raised our Series A and shipped Firecrawl /v2 🎉. [Read the blog.](https://www.firecrawl.dev/blog/firecrawl-v2-series-a-announcement)
@@ -44,7 +44,6 @@ Oct 16, 2025](https://www.firecrawl.dev/blog/15-python-projects-2025)"""
 
 def extract_articles(markdown):
     """从 Markdown 内容中提取文章信息"""
-
     # 正则表达式匹配文章模式
     # 格式: [标题\\\\描述\\\\作者\\\\日期](URL)
     pattern = r"\[(.*?)\\\\\n\\\\\n(.*?)\\\\\n\\\\\n.*?\\\\\n\\\\\n(.*?)\\\\\n\\\\\n(.*?)\]\((https://www\.firecrawl\.dev/blog/.*?)\)"
@@ -78,7 +77,6 @@ def extract_articles(markdown):
 
 def analyze_articles(articles):
     """分析文章数据"""
-
     print("=" * 80)
     print("📊 Firecrawl 博客分析报告")
     print("=" * 80)
@@ -167,7 +165,6 @@ def analyze_articles(articles):
 
 def main():
     """主函数"""
-
     # 读取完整的 Markdown 文件
     try:
         with open("firecrawl_blog.md", "r", encoding="utf-8") as f:

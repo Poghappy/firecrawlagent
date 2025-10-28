@@ -1,7 +1,7 @@
 # Agent 团队角色分工指南
 
-**项目**: FireShot  
-**更新日期**: 2025-10-28  
+**项目**: FireShot
+**更新日期**: 2025-10-28
 **版本**: v1.0.0
 
 ---
@@ -94,7 +94,7 @@ openspec show <变更名>
 2. 创建提案
    对 AI 说：
    "创建一个 OpenSpec 变更提案：添加夏威夷租房信息爬虫
-   
+
    要求：
    - 从 Craigslist Hawaii 采集租房信息
    - 数据包含：标题、价格、位置、卧室数、浴室数
@@ -104,7 +104,7 @@ openspec show <变更名>
 
 3. 审查提案
    openspec show add-rental-scraper
-   
+
 4. 验证规范
    - 检查 Requirement 是否明确
    - 检查 Scenario 是否完整
@@ -241,28 +241,28 @@ import os
 def scrape_craigslist_rentals(max_results: int = 50) -> list[Rental]:
     """
     从 Craigslist Hawaii 爬取租房信息
-    
+
     Args:
         max_results: 最大结果数
-        
+
     Returns:
         租房信息列表
     """
     app = FirecrawlApp(api_key=os.getenv("FIRECRAWL_API_KEY"))
-    
+
     # 爬取列表页
     result = app.scrape(
         url="https://honolulu.craigslist.org/search/apa",
         formats=["markdown"],
         only_main_content=True
     )
-    
+
     # 提取租房链接
     links = extract_rental_links(result.markdown)
-    
+
     # 批量爬取详情
     rentals = batch_scrape_details(links[:max_results])
-    
+
     return rentals
 
 # 3. 编写测试（tests/test_rental.py）
@@ -281,7 +281,7 @@ def test_rental_model_validation():
         posted_date="2025-10-28T10:00:00Z",
         source="craigslist_hawaii"
     )
-    
+
     assert rental.title == "2BR/1BA Apartment"
     assert rental.price == 1500.0
 ```
@@ -402,10 +402,10 @@ from models.rental import Rental
 def test_scrape_rentals_success():
     """测试：成功爬取租房信息"""
     rentals = scrape_craigslist_rentals(max_results=10)
-    
+
     assert len(rentals) > 0
     assert len(rentals) <= 10
-    
+
     for rental in rentals:
         assert isinstance(rental, Rental)
         assert rental.price > 0
@@ -418,7 +418,7 @@ def test_price_filter():
         min_price=500,
         max_price=5000
     )
-    
+
     for rental in rentals:
         assert 500 <= rental.price <= 5000
 
@@ -699,7 +699,6 @@ Product Agent: 归档变更
 
 ---
 
-**维护者**: HawaiiHub AI Team  
-**版本**: v1.0.0  
+**维护者**: HawaiiHub AI Team
+**版本**: v1.0.0
 **最后更新**: 2025-10-28
-

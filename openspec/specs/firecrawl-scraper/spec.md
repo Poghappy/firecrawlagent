@@ -1,8 +1,8 @@
 # Firecrawl 爬虫规范
 
-**模块**: firecrawl-scraper  
-**负责人**: HawaiiHub AI Team  
-**更新时间**: 2025-10-28  
+**模块**: firecrawl-scraper
+**负责人**: HawaiiHub AI Team
+**更新时间**: 2025-10-28
 **版本**: v1.0.0
 
 ---
@@ -155,16 +155,16 @@ import logging
 def scrape_with_retry(url: str, max_retries: int = 3) -> Optional[dict]:
     """
     带重试的标准爬取方法
-    
+
     Args:
         url: 要爬取的 URL
         max_retries: 最大重试次数
-        
+
     Returns:
         爬取结果，失败返回 None
     """
     app = FirecrawlApp(api_key=os.getenv("FIRECRAWL_API_KEY"))
-    
+
     for attempt in range(max_retries):
         try:
             result = app.scrape(
@@ -173,13 +173,13 @@ def scrape_with_retry(url: str, max_retries: int = 3) -> Optional[dict]:
                 only_main_content=True,
                 max_age=172800000  # 2天缓存
             )
-            
+
             if not result or not hasattr(result, "markdown"):
                 raise ValueError("返回结果无效")
-            
+
             logging.info(f"成功爬取: {url}")
             return result
-            
+
         except Exception as e:
             if attempt < max_retries - 1:
                 wait_time = 2 ** attempt
@@ -227,4 +227,3 @@ def scrape_with_retry(url: str, max_retries: int = 3) -> Optional[dict]:
 ## 变更历史
 
 - **2025-10-28**: 初始版本，定义核心规范
-

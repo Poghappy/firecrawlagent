@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""
-爬虫模板
+"""爬虫模板
 
 用途：标准的网页爬取模板，包含错误处理、缓存、日志等
 作者：HawaiiHub AI Team
@@ -16,6 +15,7 @@ from typing import Dict, List, Optional
 from dotenv import load_dotenv
 from firecrawl import FirecrawlApp
 from firecrawl.exceptions import RateLimitError, RequestTimeoutError
+
 
 # 加载环境变量
 load_dotenv()
@@ -33,8 +33,7 @@ class WebScraper:
     """网页爬虫类"""
 
     def __init__(self, api_key: Optional[str] = None):
-        """
-        初始化爬虫
+        """初始化爬虫
 
         Args:
             api_key: Firecrawl API 密钥，默认从环境变量读取
@@ -56,8 +55,7 @@ class WebScraper:
         only_main_content: bool = True,
         max_retries: int = 3,
     ) -> Optional[Dict[str, str]]:
-        """
-        爬取单个页面
+        """爬取单个页面
 
         Args:
             url: 目标 URL
@@ -125,8 +123,7 @@ class WebScraper:
         formats: List[str] = ["markdown"],
         only_main_content: bool = True,
     ) -> List[Dict[str, str]]:
-        """
-        批量爬取页面
+        """批量爬取页面
 
         Args:
             urls: URL 列表
@@ -185,8 +182,7 @@ class WebScraper:
             return []
 
     def get_stats(self) -> Dict[str, float]:
-        """
-        获取统计信息
+        """获取统计信息
 
         Returns:
             统计数据字典

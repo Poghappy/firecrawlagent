@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""
-Firecrawl API 密钥测试脚本
+"""Firecrawl API 密钥测试脚本
 
 用途：验证所有 API 密钥是否有效
 """
 
-import os
 from datetime import datetime
+
 from firecrawl import FirecrawlApp
+
 
 # 你的 API 密钥列表
 API_KEYS = {
@@ -59,14 +59,13 @@ def test_api_key(name: str, api_key: str) -> dict:
                 'content_length': content_length,
                 'title': title
             }
-        else:
-            print(f"⚠️ {name} 响应异常")
-            return {
-                'status': 'warning',
-                'key': name,
-                'masked_key': mask_key(api_key),
-                'error': '响应格式异常'
-            }
+        print(f"⚠️ {name} 响应异常")
+        return {
+            'status': 'warning',
+            'key': name,
+            'masked_key': mask_key(api_key),
+            'error': '响应格式异常'
+        }
 
     except Exception as e:
         error_msg = str(e)
@@ -124,7 +123,7 @@ def main():
         print(f"   状态: {result['status']}")
 
         if result['status'] == 'success':
-            print(f"   ✅ 可用")
+            print("   ✅ 可用")
             print(f"   耗时: {result['elapsed']:.2f}s")
             print(f"   内容: {result['content_length']} 字符")
         else:
@@ -141,19 +140,19 @@ def main():
         print("\n建议使用以下密钥配置到 .env 文件：\n")
 
         if len(valid_keys) >= 1:
-            print(f"# 主密钥")
+            print("# 主密钥")
             print(f"FIRECRAWL_API_KEY={API_KEYS[valid_keys[0]['key']]}")
 
         if len(valid_keys) >= 2:
-            print(f"\n# 备用密钥 1")
+            print("\n# 备用密钥 1")
             print(f"FIRECRAWL_API_KEY_BACKUP_1={API_KEYS[valid_keys[1]['key']]}")
 
         if len(valid_keys) >= 3:
-            print(f"\n# 备用密钥 2")
+            print("\n# 备用密钥 2")
             print(f"FIRECRAWL_API_KEY_BACKUP_2={API_KEYS[valid_keys[2]['key']]}")
 
         if len(valid_keys) >= 4:
-            print(f"\n# 备用密钥 3")
+            print("\n# 备用密钥 3")
             print(f"FIRECRAWL_API_KEY_BACKUP_3={API_KEYS[valid_keys[3]['key']]}")
     else:
         print("\n⚠️ 没有找到有效的 API 密钥！")

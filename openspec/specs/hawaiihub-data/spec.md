@@ -1,8 +1,8 @@
 # HawaiiHub 数据采集规范
 
-**模块**: hawaiihub-data  
-**负责人**: HawaiiHub AI Team  
-**更新时间**: 2025-10-28  
+**模块**: hawaiihub-data
+**负责人**: HawaiiHub AI Team
+**更新时间**: 2025-10-28
 **版本**: v1.0.0
 
 ---
@@ -236,10 +236,10 @@ class Article(BaseModel):
 def scrape_hawaii_news(source_config: dict) -> list[Article]:
     """
     标准新闻采集流程
-    
+
     Args:
         source_config: 数据源配置
-        
+
     Returns:
         文章列表
     """
@@ -248,31 +248,31 @@ def scrape_hawaii_news(source_config: dict) -> list[Article]:
     if should_skip(last_scrape, frequency="6h"):
         logging.info(f"跳过采集: {source_config['name']}（未到采集时间）")
         return []
-    
+
     # 2. 爬取首页
     result = scrape_with_retry(source_config["url"])
     if not result:
         return []
-    
+
     # 3. 提取文章链接
     links = extract_article_links(result.markdown)
-    
+
     # 4. 过滤已采集的链接
     new_links = filter_uncrawled_urls(links)
-    
+
     # 5. 批量爬取文章内容
     articles = batch_scrape_articles(new_links[:10])
-    
+
     # 6. 数据清洗和验证
     cleaned = [clean_article(a) for a in articles]
     validated = [Article(**a) for a in cleaned]
-    
+
     # 7. 保存数据
     save_articles(validated, source_config["name"])
-    
+
     # 8. 更新采集时间
     update_last_scrape_time(source_config["name"])
-    
+
     return validated
 ```
 
@@ -290,4 +290,3 @@ def scrape_hawaii_news(source_config: dict) -> list[Article]:
 ## 变更历史
 
 - **2025-10-28**: 初始版本，定义核心数据模型和采集规范
-

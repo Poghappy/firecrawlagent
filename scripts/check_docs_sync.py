@@ -15,6 +15,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Tuple
 
+
 # 配置
 DOCS_ROOT = Path(
     "/Users/zhiledeng/Downloads/FireShot/Firecrawl文档资料/官方文档/firecrawl-docs"

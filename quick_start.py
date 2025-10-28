@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""
-Firecrawl 快速开始示例
+"""Firecrawl 快速开始示例
 
 演示如何使用 Firecrawl API 爬取夏威夷新闻网站
 """
@@ -8,6 +7,7 @@ Firecrawl 快速开始示例
 from datetime import datetime
 
 from firecrawl import FirecrawlApp
+
 
 # 使用你的主 API 密钥
 API_KEY = "fc-31ebbe4647b84fdc975318d372eebea8"

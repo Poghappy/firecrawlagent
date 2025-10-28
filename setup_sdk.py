@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""
-Firecrawl SDK 配置脚本
+"""Firecrawl SDK 配置脚本
 
 自动检测并配置 Firecrawl Python SDK 环境
 """
@@ -117,12 +116,10 @@ def check_env_file() -> bool:
                 print("✅ 已创建 .env 文件")
                 print("⚠️  请编辑 .env 文件，填入你的 API 密钥")
                 return True
-            else:
-                print("❌ 需要手动创建 .env 文件")
-                return False
-        else:
-            print("❌ 未找到 .env 或 env.template 文件")
+            print("❌ 需要手动创建 .env 文件")
             return False
+        print("❌ 未找到 .env 或 env.template 文件")
+        return False
 
     print(f"✅ 找到 .env 文件: {env_file}")
     return True
@@ -159,9 +156,8 @@ def test_api_key() -> bool:
             print("✅ API 密钥有效，连接成功！")
             print(f"📊 测试数据: {len(result.markdown)} 字符")
             return True
-        else:
-            print("❌ API 返回结果异常")
-            return False
+        print("❌ API 返回结果异常")
+        return False
 
     except ImportError:
         print("❌ firecrawl-py 包未安装")
@@ -225,9 +221,7 @@ def create_gitignore() -> None:
             f.write("\n\n# === Firecrawl SDK 配置 ===\n")
 
         for entry in essential_entries:
-            if not entry.startswith("#") and entry and entry not in existing_entries:
-                f.write(entry + "\n")
-            elif entry.startswith("#") or not entry:
+            if not entry.startswith("#") and entry and entry not in existing_entries or entry.startswith("#") or not entry:
                 f.write(entry + "\n")
 
     print(f"✅ 已更新 .gitignore: {gitignore_file}")

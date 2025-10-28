@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""
-Firecrawl 学习手册 PDF 生成器 v2.0
+"""Firecrawl 学习手册 PDF 生成器 v2.0
 
 功能：
 - 合并所有 Markdown 文档
@@ -19,6 +18,7 @@ from pathlib import Path
 import markdown
 from weasyprint import HTML
 from weasyprint.text.fonts import FontConfiguration
+
 
 # 配置
 TEMP_DIR = "temp_pdf"
@@ -436,7 +436,7 @@ def show_stats():
     print("=" * 50)
 
     # 统计 Markdown 文件
-    md_files = list(Path(".").rglob("*.md"))
+    md_files = list(Path().rglob("*.md"))
     print_color(f"Markdown 文件: {len(md_files)} 个", "yellow")
 
     # 统计总字数

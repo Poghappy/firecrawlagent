@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""
-爬取 Firecrawl 博客内容
+"""爬取 Firecrawl 博客内容
 
 用途：演示如何使用 Firecrawl API 爬取博客文章列表
 """
@@ -9,6 +8,7 @@ import json
 from datetime import datetime
 
 from firecrawl import FirecrawlApp
+
 
 # 使用性能最好的 API 密钥
 API_KEY = "fc-00857d82ec534e8598df1bae9af9fb28"  # 最快的密钥 (1.08秒)

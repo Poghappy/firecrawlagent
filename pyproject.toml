@@ -1,15 +1,14 @@
-# FireShot 项目配置文件
-# Python 开发环境：Ruff + mypy + pytest
-
 [project]
 name = "fireshot"
 version = "1.0.0"
 description = "Firecrawl 云 API 最佳实践和 HawaiiHub 数据采集"
-authors = [{ name = "HawaiiHub AI Team" }]
+authors = [
+    {name = "HawaiiHub AI Team", email = "ai@hawaiihub.com"}
+]
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "firecrawl-py>=1.0.0",
+    "firecrawl-py>=2.0.0",
     "python-dotenv>=1.0.0",
     "requests>=2.31.0",
     "pydantic>=2.0.0",
@@ -18,153 +17,175 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "ruff>=0.1.9",
-    "mypy>=1.7.0",
-    "pytest>=8.0.0",
+    "pytest>=7.4.0",
     "pytest-cov>=4.1.0",
-    "types-requests>=2.31.0",
+    "mypy>=1.7.0",
 ]
 
-# ========================================
-# 🔥 Ruff 配置（格式化 + Linting）
-# ========================================
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+# =============================================================================
+# Ruff 配置 - Python Linter & Formatter
+# =============================================================================
 [tool.ruff]
+# 行长度（项目标准：88字符）
 line-length = 88
+
+# 目标 Python 版本
 target-version = "py311"
 
 # 排除目录
 exclude = [
     ".git",
+    ".ruff_cache",
     ".venv",
     "venv",
     "__pycache__",
     "build",
     "dist",
     "*.egg-info",
-    "logs",
-    "data",
-    ".steel",
-    "内容数据库",
-    "Firecrawl官方文档",
 ]
 
+# =============================================================================
+# Ruff Linting 规则
+# =============================================================================
 [tool.ruff.lint]
-# 启用的检查规则
+# 启用的规则集
 select = [
-    "E",   # pycodestyle errors
-    "W",   # pycodestyle warnings
-    "F",   # pyflakes
-    "I",   # isort (导入排序)
-    "B",   # flake8-bugbear (常见错误)
-    "C4",  # flake8-comprehensions (列表推导优化)
-    "UP",  # pyupgrade (Python 版本升级建议)
-    "SIM", # flake8-simplify (代码简化)
+    # Pycodestyle
+    "E",      # pycodestyle errors
+    "W",      # pycodestyle warnings
+
+    # Pyflakes
+    "F",      # pyflakes
+
+    # Import sorting
+    "I",      # isort
+
+    # Bugbear
+    "B",      # flake8-bugbear
+
+    # Comprehensions
+    "C4",     # flake8-comprehensions
+
+    # Type checking
+    "ANN",    # flake8-annotations（类型注解）
+
+    # Docstrings
+    "D",      # pydocstyle（文档字符串）
+
+    # Security
+    "S",      # flake8-bandit
+
+    # Simplify
+    "SIM",    # flake8-simplify
+
+    # Return
+    "RET",    # flake8-return
+
+    # Unused arguments
+    "ARG",    # flake8-unused-arguments
+
+    # Path
+    "PTH",    # flake8-use-pathlib
+
+    # Logging
+    "G",      # flake8-logging-format
 ]
 
 # 忽略的规则
 ignore = [
-    "E501",  # 行长度（由格式化器处理）
-    "B008",  # 函数调用在参数默认值（FastAPI 需要）
-    "B904",  # raise ... from err（简化错误处理）
+    # 文档字符串相关（过于严格）
+    "D100",   # Missing docstring in public module
+    "D104",   # Missing docstring in public package
+    "D203",   # 1 blank line required before class docstring（与D211冲突）
+    "D213",   # Multi-line docstring summary should start at the second line（与D212冲突）
+
+    # 类型注解相关（逐步迁移）
+    "ANN101", # Missing type annotation for self in method
+    "ANN102", # Missing type annotation for cls in classmethod
+    "ANN401", # Dynamically typed expressions (typing.Any) are disallowed
+
+    # 安全相关（根据实际情况）
+    "S101",   # Use of assert detected（测试中需要）
+    "S301",   # pickle usage（某些场景需要）
+
+    # 其他
+    "B008",   # Do not perform function calls in argument defaults
+    "RET504", # Unnecessary variable assignment before return
+    "SIM108", # Use ternary operator instead of if-else-block
 ]
 
-# 每个文件允许的未使用导入
-per-file-ignores = { "__init__.py" = ["F401"], "test_*.py" = ["F401", "F811"] }
+# 每个文件的忽略规则
+[tool.ruff.lint.per-file-ignores]
+# 测试文件允许使用 assert
+"tests/*" = ["S101", "ANN", "D"]
+# 脚本文件放宽要求
+"scripts/*" = ["D", "ANN"]
 
-[tool.ruff.format]
-# 格式化选项
-quote-style = "double"              # 强制双引号
-indent-style = "space"              # 使用空格缩进
-skip-magic-trailing-comma = false   # 保留尾随逗号
-line-ending = "auto"                # 自动检测行尾
-
+# =============================================================================
+# Import Sorting（isort 兼容配置）
+# =============================================================================
 [tool.ruff.lint.isort]
-# 导入排序配置
-known-first-party = ["src", "scripts"]
-section-order = [
-    "future",
-    "standard-library",
-    "third-party",
-    "first-party",
-    "local-folder",
-]
+known-first-party = ["fireshot"]
+known-third-party = ["firecrawl", "pydantic", "dotenv"]
+section-order = ["future", "standard-library", "third-party", "first-party", "local-folder"]
+lines-after-imports = 2
 
-# ========================================
-# 🔍 mypy 配置（类型检查）
-# ========================================
-[tool.mypy]
-python_version = "3.11"
-strict = true
-warn_return_any = true
-warn_unused_configs = true
-warn_redundant_casts = true
-warn_unused_ignores = true
-disallow_untyped_defs = true
-disallow_any_unimported = false
-no_implicit_optional = true
-show_error_codes = true
-pretty = true
+# =============================================================================
+# Docstring 配置
+# =============================================================================
+[tool.ruff.lint.pydocstyle]
+convention = "google"  # Google 风格的文档字符串
 
-# 忽略缺失的第三方库类型
-ignore_missing_imports = true
+# =============================================================================
+# Ruff Formatter 配置
+# =============================================================================
+[tool.ruff.format]
+# 引号风格（项目标准：双引号）
+quote-style = "double"
 
-# 排除目录
-exclude = [
-    "build/",
-    "dist/",
-    "venv/",
-    ".venv/",
-    "logs/",
-    "data/",
-]
+# 缩进风格
+indent-style = "space"
 
-# 第三方库特殊配置
-[[tool.mypy.overrides]]
-module = "firecrawl.*"
-ignore_missing_imports = true
+# 保留魔术逗号
+skip-magic-trailing-comma = false
 
-[[tool.mypy.overrides]]
-module = "dotenv.*"
-ignore_missing_imports = true
+# 行尾
+line-ending = "auto"
 
-# 测试文件放宽限制
-[[tool.mypy.overrides]]
-module = "tests.*"
-disallow_untyped_defs = false
-disallow_untyped_calls = false
+# 文档字符串格式化
+docstring-code-format = true
 
-# ========================================
-# 🧪 pytest 配置（测试框架）
-# ========================================
+# =============================================================================
+# Pytest 配置
+# =============================================================================
 [tool.pytest.ini_options]
-# 测试目录和文件模式
 testpaths = ["tests"]
 python_files = ["test_*.py", "*_test.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
-
-# 测试选项
 addopts = [
-    "-v",                        # 详细输出
-    "--tb=short",                # 短错误追踪
-    "--color=yes",               # 彩色输出
-    "--strict-markers",          # 严格标记模式
-    # 覆盖率检查（当有 src 目录代码时启用）
-    # "--cov=src",
-    # "--cov-report=html",
-    # "--cov-report=term-missing",
-    # "--cov-fail-under=80",
+    "-v",
+    "--strict-markers",
+    "--tb=short",
+    "--cov=src",
+    "--cov-report=term-missing",
+    "--cov-report=html",
 ]
-
-# 标记定义
 markers = [
-    "slow: 标记慢速测试（需要网络请求）",
-    "integration: 标记集成测试（需要真实 API）",
-    "unit: 标记单元测试（不依赖外部资源）",
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+    "unit: marks tests as unit tests",
 ]
 
-# 覆盖率配置
+# =============================================================================
+# Coverage 配置
+# =============================================================================
 [tool.coverage.run]
-source = ["src", "scripts"]
+source = ["src"]
 omit = [
     "*/tests/*",
     "*/test_*.py",
@@ -177,20 +198,33 @@ omit = [
 exclude_lines = [
     "pragma: no cover",
     "def __repr__",
-    "if __name__ == .__main__.:",
     "raise AssertionError",
     "raise NotImplementedError",
+    "if __name__ == .__main__.:",
     "if TYPE_CHECKING:",
     "@abstractmethod",
 ]
 
-# ========================================
-# 📦 构建配置
-# ========================================
-[build-system]
-requires = ["setuptools>=68.0", "wheel"]
-build-backend = "setuptools.build_meta"
+# =============================================================================
+# MyPy 配置
+# =============================================================================
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+strict_equality = true
 
-[tool.setuptools]
-packages = ["src"]
-
+# 第三方库类型检查
+[[tool.mypy.overrides]]
+module = [
+    "firecrawl.*",
+    "dotenv.*",
+]
+ignore_missing_imports = true
