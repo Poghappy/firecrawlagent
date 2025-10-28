@@ -52,7 +52,7 @@ jobs:
         FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
 
     - name: 上传覆盖率报告
-      uses: codecov/codecov-action@v4
+      uses: codecov/codecov-action@v5
       if: matrix.python-version == '3.11'
       with:
         file: ./coverage.xml
