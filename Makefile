@@ -92,6 +92,20 @@ check: lint type-check ## 快速检查（Lint + 类型检查）
 	@echo "✅ 代码检查通过！"
 
 # ===========================
+# 项目维护
+# ===========================
+health: ## 运行项目健康检查
+	@echo "🔍 运行项目健康检查..."
+	@./scripts/project_health_check.sh
+
+optimize: ## 运行项目优化脚本
+	@echo "🚀 运行项目优化..."
+	@./scripts/optimize_project.sh
+
+maintenance: health optimize ## 完整维护（健康检查 + 优化）
+	@echo "✅ 项目维护完成！"
+
+# ===========================
 # 清理
 # ===========================
 clean: ## 清理缓存和临时文件

@@ -1,0 +1,180 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  workflow_dispatch:
+
+jobs:
+  # Python 测试和检查
+  python-tests:
+    name: Python ${{ matrix.python-version }} 测试
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+
+    steps:
+    - name: 检出代码
+      uses: actions/checkout@v4
+
+    - name: 设置 Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+        cache: 'pip'
+
+    - name: 安装依赖
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install ruff mypy pytest pytest-cov
+
+    - name: Ruff 格式检查
+      run: |
+        ruff format --check .
+
+    - name: Ruff Linting
+      run: |
+        ruff check .
+
+    - name: 类型检查
+      run: |
+        mypy src/ --ignore-missing-imports
+
+    - name: 运行测试
+      run: |
+        pytest --cov=src --cov-report=xml --cov-report=html
+      env:
+        FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
+
+    - name: 上传覆盖率报告
+      uses: codecov/codecov-action@v4
+      if: matrix.python-version == '3.11'
+      with:
+        file: ./coverage.xml
+        fail_ci_if_error: false
+
+  # Node.js 测试和检查（如果有）
+  node-tests:
+    name: Node.js 测试
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 检出代码
+      uses: actions/checkout@v4
+
+    - name: 设置 Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+
+    - name: 安装依赖
+      run: npm ci
+
+    - name: TypeScript 编译检查
+      run: npx tsc --noEmit
+
+    - name: ESLint 检查
+      run: |
+        if [ -f .eslintrc.json ] || [ -f .eslintrc.js ]; then
+          npx eslint . --ext .ts,.tsx,.js,.jsx
+        else
+          echo "跳过 ESLint（无配置文件）"
+        fi
+
+  # 安全审计
+  security-audit:
+    name: 安全审计
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 检出代码
+      uses: actions/checkout@v4
+
+    - name: 设置 Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: 安装 pip-audit
+      run: pip install pip-audit
+
+    - name: Python 依赖安全审计
+      run: |
+        pip-audit --require-hashes --disable-pip || true
+
+    - name: 设置 Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: npm 安全审计
+      run: |
+        npm audit --production || true
+
+  # 文档检查
+  docs-check:
+    name: 文档完整性检查
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 检出代码
+      uses: actions/checkout@v4
+
+    - name: 检查必需文档
+      run: |
+        echo "检查必需文档..."
+        FILES=(
+          "README.md"
+          "CHANGELOG.md"
+          "CONTRIBUTING.md"
+          "LICENSE"
+          "SECURITY.md"
+          "CODE_OF_CONDUCT.md"
+        )
+
+        for file in "${FILES[@]}"; do
+          if [ ! -f "$file" ]; then
+            echo "❌ 缺少文件: $file"
+            exit 1
+          else
+            echo "✅ 找到: $file"
+          fi
+        done
+
+    - name: 检查 Markdown 链接
+      uses: gaurav-nelson/github-action-markdown-link-check@v1
+      with:
+        use-quiet-mode: 'yes'
+        config-file: '.github/markdown-link-check-config.json'
+      continue-on-error: true
+
+  # 根目录文档数量检查
+  docs-count-check:
+    name: 根目录文档数量检查
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 检出代码
+      uses: actions/checkout@v4
+
+    - name: 检查根目录 Markdown 文件数量
+      run: |
+        echo "检查根目录 .md 文件数量..."
+        MD_COUNT=$(ls -1 *.md 2>/dev/null | wc -l)
+        echo "当前根目录有 $MD_COUNT 个 .md 文件"
+
+        MAX_MD_FILES=5
+        if [ $MD_COUNT -gt $MAX_MD_FILES ]; then
+          echo "❌ 错误：根目录有 $MD_COUNT 个 .md 文件，超过限制 ($MAX_MD_FILES)"
+          echo "请将多余的文档移到 docs/ 目录"
+          ls -1 *.md
+          exit 1
+        else
+          echo "✅ 通过：根目录文档数量符合规范"
+        fi

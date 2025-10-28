@@ -1,0 +1,15 @@
+# 赞助配置
+# 这些是支持的筹款平台
+
+github: # 用您的 GitHub 用户名替换
+# patreon: # 替换为单个 Patreon 用户名
+# open_collective: # 替换为单个 Open Collective 用户名
+# ko_fi: # 替换为单个 Ko-fi 用户名
+# tidelift: # 替换为单个 Tidelift 平台名称/包名称，例如 npm/babel
+# community_bridge: # 替换为单个 Community Bridge 项目名称，例如 cloud-foundry
+# liberapay: # 替换为单个 Liberapay 用户名
+# issuehunt: # 替换为单个 IssueHunt 用户名
+# otechie: # 替换为单个 Otechie 用户名
+# lfx_crowdfunding: # 替换为单个 LFX Crowdfunding 项目名称，例如 cloud-foundry
+custom: # 替换为最多 4 个自定义赞助 URL，例如 ['link1', 'link2']
+

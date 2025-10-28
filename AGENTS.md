@@ -407,6 +407,31 @@ git commit -m "fix bug"
 6. 使用单引号（Python 统一双引号）
 7. 缺少类型注解（所有函数必须有完整类型）
 8. 缺少文档字符串（所有公开函数/类必须有 docstring）
+9. **生成无用的报告文档**（如 *_REPORT.md、*_COMPLETE.md、*_SUMMARY.md 等）
+10. **创建临时脚本**（除非用户明确要求且有长期维护价值）
+
+### 文档生成规范 📋
+
+**允许更新的文档**：
+- `CHANGELOG.md` - 变更日志（必须）
+- `README.md` - 项目说明（核心章节更新）
+- `.cursor/logs/development/YYYY-MM/YYYY-MM-DD.md` - 开发日志（详细记录）
+
+**禁止创建的文档**：
+- ❌ 执行报告（*_EXECUTION_REPORT.md）
+- ❌ 完成总结（*_COMPLETE.md、*_SUMMARY.md）
+- ❌ 优化报告（**OPTIMIZATION**.md）
+- ❌ 测试报告（*_TEST_REPORT.md）
+- ❌ 配置报告（**CONFIG**.md）
+- ❌ 任何形式的"完成"、"总结"、"报告"类文档
+
+**唯一例外**：用户明确要求"生成XXX报告文档"时才可以创建。
+
+**脚本创建规范**：
+- ✅ 允许：长期维护的工具脚本（如 `scripts/cleanup_dependencies.sh`）
+- ❌ 禁止：一次性使用的临时脚本
+- ❌ 禁止：重复现有功能的脚本
+- ❌ 禁止：测试脚本（应使用 pytest）
 
 ### 强烈不推荐 ⚠️
 
@@ -414,6 +439,7 @@ git commit -m "fix bug"
 2. 串行处理大量 URL（使用 batch_scrape）
 3. 不记录日志（难以调试）
 4. 不验证数据格式（使用 Pydantic）
+5. 在根目录创建文档（应放在 `docs/` 或 `.cursor/logs/`）
 
 ---
 

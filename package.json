@@ -5,12 +5,23 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "dev": "tsx watch src/config.ts"
+    "dev": "tsx watch src/config.ts",
+    "lint": "eslint src/**/*.ts --fix",
+    "format": "prettier --write \"src/**/*.{js,ts}\" \"scripts/**/*.{js,ts}\" \"*.{js,ts,json,md}\" \"examples/**/*.{js,ts}\" \"config/**/*.json\" --ignore-unknown",
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf dist build .tsbuildinfo",
+    "health": "./scripts/project_health_check.sh",
+    "optimize": "./scripts/optimize_project.sh",
+    "check": "npm run lint && npm run type-check",
+    "prepare": "husky install || true"
   },
   "keywords": [
     "firecrawl",
     "web-scraping",
-    "hawaiihub"
+    "hawaiihub",
+    "data-scraping",
+    "mcp",
+    "ai-agent"
   ],
   "author": "HawaiiHub AI Team",
   "license": "MIT",
@@ -19,10 +30,31 @@
   },
   "devDependencies": {
     "@types/node": "^22.10.5",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "husky": "^9.0.0",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.2.0",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ],
+    "*.py": [
+      "ruff format",
+      "ruff check --fix"
+    ]
   }
 }

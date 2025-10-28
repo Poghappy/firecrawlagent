@@ -1,0 +1,82 @@
+# ===================================================================
+# Prettier 忽略文件配置
+# ===================================================================
+# 与 .gitignore 保持一致，避免格式化不需要的文件
+# ===================================================================
+
+# 依赖目录
+node_modules/
+**/node_modules/
+.npm/
+.pnpm-store/
+.yarn/
+
+# 构建产物
+build/
+dist/
+.next/
+.nuxt/
+out/
+*.tsbuildinfo
+
+# 数据和日志
+data/
+logs/
+*.log
+scraped-content/
+scraped-data/
+
+# 缓存
+.cache/
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+__pycache__/
+
+# 环境变量
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+.cursor/cache/
+
+# 版本控制
+.git/
+.gitignore
+.gitattributes
+
+# 文档（大型目录）
+Firecrawl官方文档/
+firecrawl-docs/
+hawaiihub.net 真实部署克隆源码/
+hawaiihub-admin-agent/hawaiihub.net 真实部署克隆源码/
+内容数据库/
+
+# 有权限问题的目录
+**/templates_c/
+**/caches/
+
+# 归档和备份
+.backup/
+archive/
+*.backup
+*.bak
+
+# 媒体文件
+*.pdf
+*.zip
+*.tar.gz
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.mp4
+*.mov
+
+# 特定文件
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+CHANGELOG.md

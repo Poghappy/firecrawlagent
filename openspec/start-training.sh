@@ -124,7 +124,7 @@ case $choice in
         echo -e "${CYAN}║${NC}  ${BOLD}第 1 天：环境熟悉${NC}                                          ${CYAN}║${NC}"
         echo -e "${CYAN}╚════════════════════════════════════════════════════════════════╝${NC}"
         echo ""
-        
+
         echo -e "${YELLOW}📖 步骤 1/3: 阅读文档导航索引 (10 分钟)${NC}"
         echo -e "${PURPLE}───────────────────────────────────────────────────────────────${NC}"
         echo ""
@@ -132,14 +132,14 @@ case $choice in
         echo ""
         echo -ne "${YELLOW}按 Enter 继续...${NC}"
         read
-        
+
         cat "${OPENSPEC_DIR}/README.md"
-        
+
         echo ""
         echo -e "${PURPLE}───────────────────────────────────────────────────────────────${NC}"
         echo -ne "${YELLOW}已完成阅读？按 Enter 继续下一步...${NC}"
         read
-        
+
         clear
         echo -e "${YELLOW}📖 步骤 2/3: 30分钟快速上手培训${NC}"
         echo -e "${PURPLE}───────────────────────────────────────────────────────────────${NC}"
@@ -156,14 +156,14 @@ case $choice in
         echo ""
         echo -ne "${YELLOW}按 Enter 继续...${NC}"
         read
-        
+
         cat "${OPENSPEC_DIR}/AGENT_TEAM_QUICKSTART.md"
-        
+
         echo ""
         echo -e "${PURPLE}───────────────────────────────────────────────────────────────${NC}"
         echo -ne "${YELLOW}已完成阅读？按 Enter 继续实战练习...${NC}"
         read
-        
+
         clear
         echo -e "${YELLOW}🎯 步骤 3/3: 实战练习 (20 分钟)${NC}"
         echo -e "${PURPLE}───────────────────────────────────────────────────────────────${NC}"
@@ -182,7 +182,7 @@ case $choice in
         echo ""
         echo -ne "${YELLOW}完成练习 1？按 Enter 继续...${NC}"
         read
-        
+
         echo ""
         echo -e "${BOLD}练习 2: 创建变更提案 (10 分钟)${NC}"
         echo ""
@@ -200,7 +200,7 @@ case $choice in
         echo ""
         echo -ne "${YELLOW}完成练习 2？按 Enter 继续...${NC}"
         read
-        
+
         echo ""
         echo -e "${BOLD}练习 3: 审查规范差异 (5 分钟)${NC}"
         echo ""
@@ -216,7 +216,7 @@ case $choice in
         echo ""
         echo -ne "${YELLOW}完成练习 3？按 Enter 继续...${NC}"
         read
-        
+
         clear
         echo -e "${GREEN}╔════════════════════════════════════════════════════════════════╗${NC}"
         echo -e "${GREEN}║${NC}  ${BOLD}🎉 恭喜！第 1 天培训完成！${NC}                               ${GREEN}║${NC}"
@@ -233,7 +233,7 @@ case $choice in
         echo -e "${PURPLE}提示: 再次运行此脚本并选择 \"2\" 继续第 2 天培训${NC}"
         echo ""
         ;;
-        
+
     2)
         # 第 2 天培训
         clear
@@ -241,7 +241,7 @@ case $choice in
         echo -e "${CYAN}║${NC}  ${BOLD}第 2 天：规范学习${NC}                                          ${CYAN}║${NC}"
         echo -e "${CYAN}╚════════════════════════════════════════════════════════════════╝${NC}"
         echo ""
-        
+
         echo -e "${YELLOW}📖 步骤 1/3: 阅读项目全局规范 (15 分钟)${NC}"
         echo -e "${PURPLE}───────────────────────────────────────────────────────────────${NC}"
         echo ""
@@ -255,14 +255,14 @@ case $choice in
         echo ""
         echo -ne "${YELLOW}按 Enter 继续...${NC}"
         read
-        
+
         cat "${OPENSPEC_DIR}/project.md"
-        
+
         echo ""
         echo -e "${PURPLE}───────────────────────────────────────────────────────────────${NC}"
         echo -ne "${YELLOW}已完成阅读？按 Enter 继续...${NC}"
         read
-        
+
         clear
         echo -e "${YELLOW}📖 步骤 2/3: 阅读 Firecrawl 爬虫规范 (10 分钟)${NC}"
         echo -e "${PURPLE}───────────────────────────────────────────────────────────────${NC}"
@@ -278,14 +278,14 @@ case $choice in
         echo ""
         echo -ne "${YELLOW}按 Enter 继续...${NC}"
         read
-        
+
         cat "${OPENSPEC_DIR}/specs/firecrawl-scraper/spec.md"
-        
+
         echo ""
         echo -e "${PURPLE}───────────────────────────────────────────────────────────────${NC}"
         echo -ne "${YELLOW}已完成阅读？按 Enter 继续...${NC}"
         read
-        
+
         clear
         echo -e "${YELLOW}📖 步骤 3/3: 阅读 HawaiiHub 数据规范 (10 分钟)${NC}"
         echo -e "${PURPLE}───────────────────────────────────────────────────────────────${NC}"
@@ -300,13 +300,13 @@ case $choice in
         echo ""
         echo -ne "${YELLOW}按 Enter 继续...${NC}"
         read
-        
+
         cat "${OPENSPEC_DIR}/specs/hawaiihub-data/spec.md"
-        
+
         echo ""
         echo -e "${PURPLE}───────────────────────────────────────────────────────────────${NC}"
         echo ""
-        
+
         clear
         echo -e "${GREEN}╔════════════════════════════════════════════════════════════════╗${NC}"
         echo -e "${GREEN}║${NC}  ${BOLD}🎉 恭喜！第 2 天培训完成！${NC}                               ${GREEN}║${NC}"
@@ -323,7 +323,7 @@ case $choice in
         echo -e "${PURPLE}提示: 再次运行此脚本并选择 \"3\" 继续第 3 天培训${NC}"
         echo ""
         ;;
-        
+
     3)
         # 第 3 天培训
         clear
@@ -331,7 +331,7 @@ case $choice in
         echo -e "${CYAN}║${NC}  ${BOLD}第 3 天：角色定位${NC}                                          ${CYAN}║${NC}"
         echo -e "${CYAN}╚════════════════════════════════════════════════════════════════╝${NC}"
         echo ""
-        
+
         echo -e "${YELLOW}📖 步骤 1/3: 阅读团队角色分工 (20 分钟)${NC}"
         echo -e "${PURPLE}───────────────────────────────────────────────────────────────${NC}"
         echo ""
@@ -346,14 +346,14 @@ case $choice in
         echo ""
         echo -ne "${YELLOW}按 Enter 继续...${NC}"
         read
-        
+
         cat "${OPENSPEC_DIR}/AGENT_ROLES_GUIDE.md"
-        
+
         echo ""
         echo -e "${PURPLE}───────────────────────────────────────────────────────────────${NC}"
         echo -ne "${YELLOW}已完成阅读？按 Enter 继续...${NC}"
         read
-        
+
         clear
         echo -e "${YELLOW}🎯 步骤 2/3: 明确角色职责 (10 分钟)${NC}"
         echo -e "${PURPLE}───────────────────────────────────────────────────────────────${NC}"
@@ -368,7 +368,7 @@ case $choice in
         echo ""
         echo -ne "${YELLOW}请输入选项 [1-5]: ${NC}"
         read -r role_choice
-        
+
         case $role_choice in
             1)
                 ROLE_NAME="Product Agent"
@@ -401,7 +401,7 @@ case $choice in
                 ROLE_CMD="/openspec:apply <变更名>"
                 ;;
         esac
-        
+
         clear
         echo -e "${GREEN}✅ 你选择的角色：${BOLD}${ROLE_NAME}${NC}"
         echo -e "${CYAN}职责：${ROLE_DESC}${NC}"
@@ -409,14 +409,14 @@ case $choice in
         echo ""
         echo -ne "${YELLOW}按 Enter 继续最后一步...${NC}"
         read
-        
+
         clear
         echo -e "${YELLOW}🚀 步骤 3/3: 创建第一个真实变更 (2 小时)${NC}"
         echo -e "${PURPLE}───────────────────────────────────────────────────────────────${NC}"
         echo ""
         echo -e "${BOLD}实战任务：根据你的角色创建一个真实变更${NC}"
         echo ""
-        
+
         if [ "$role_choice" == "1" ]; then
             echo -e "${GREEN}Product Agent 实战任务：${NC}"
             echo -e "  在 Cursor 中对 AI 说："
@@ -441,7 +441,7 @@ case $choice in
             echo -e "  根据角色分工指南中的示例任务"
             echo -e "  完成一个完整的工作流程"
         fi
-        
+
         echo ""
         echo -e "${PURPLE}───────────────────────────────────────────────────────────────${NC}"
         echo ""
@@ -452,7 +452,7 @@ case $choice in
         echo ""
         echo -ne "${YELLOW}准备好开始实战了吗？按 Enter 完成培训...${NC}"
         read
-        
+
         clear
         echo -e "${GREEN}╔════════════════════════════════════════════════════════════════╗${NC}"
         echo -e "${GREEN}║${NC}  ${BOLD}🎉 恭喜！3 天培训全部完成！${NC}                             ${GREEN}║${NC}"
@@ -472,7 +472,7 @@ case $choice in
         echo -e "${PURPLE}你现在已经是 FireShot Agent 团队的正式成员了！${NC}"
         echo ""
         ;;
-        
+
     4)
         # 查看所有文档
         clear
@@ -480,7 +480,7 @@ case $choice in
         echo -e "${CYAN}║${NC}  ${BOLD}OpenSpec 培训文档列表${NC}                                    ${CYAN}║${NC}"
         echo -e "${CYAN}╚════════════════════════════════════════════════════════════════╝${NC}"
         echo ""
-        
+
         echo -e "${YELLOW}📚 核心培训文档${NC}"
         echo -e "${PURPLE}───────────────────────────────────────────────────────────────${NC}"
         ls -lh "${OPENSPEC_DIR}/README.md" 2>/dev/null || echo "  README.md (缺失)"
@@ -488,13 +488,13 @@ case $choice in
         ls -lh "${OPENSPEC_DIR}/AGENT_ROLES_GUIDE.md" 2>/dev/null || echo "  AGENT_ROLES_GUIDE.md (缺失)"
         ls -lh "${OPENSPEC_DIR}/project.md" 2>/dev/null || echo "  project.md (缺失)"
         echo ""
-        
+
         echo -e "${YELLOW}📖 规范文档${NC}"
         echo -e "${PURPLE}───────────────────────────────────────────────────────────────${NC}"
         ls -lh "${OPENSPEC_DIR}/specs/firecrawl-scraper/spec.md" 2>/dev/null || echo "  firecrawl-scraper/spec.md (缺失)"
         ls -lh "${OPENSPEC_DIR}/specs/hawaiihub-data/spec.md" 2>/dev/null || echo "  hawaiihub-data/spec.md (缺失)"
         echo ""
-        
+
         echo -e "${YELLOW}📑 其他文档${NC}"
         echo -e "${PURPLE}───────────────────────────────────────────────────────────────${NC}"
         ls -lh "${PROJECT_ROOT}/OPENSPEC_GUIDE.md" 2>/dev/null || echo "  OPENSPEC_GUIDE.md (缺失)"
@@ -502,7 +502,7 @@ case $choice in
         ls -lh "${PROJECT_ROOT}/AGENTS.md" 2>/dev/null || echo "  AGENTS.md (缺失)"
         echo ""
         ;;
-        
+
     5)
         # 快速验证
         clear
@@ -510,30 +510,30 @@ case $choice in
         echo -e "${CYAN}║${NC}  ${BOLD}OpenSpec 环境验证${NC}                                        ${CYAN}║${NC}"
         echo -e "${CYAN}╚════════════════════════════════════════════════════════════════╝${NC}"
         echo ""
-        
+
         echo -e "${YELLOW}运行验证测试...${NC}"
         echo ""
-        
+
         # 运行 openspec list
         echo -e "${CYAN}► openspec list${NC}"
         cd "$PROJECT_ROOT" && openspec list
         echo ""
-        
+
         # 检查规范文件数
         SPEC_COUNT=$(find "${OPENSPEC_DIR}/specs" -name "spec.md" 2>/dev/null | wc -l)
         echo -e "规范模块数: ${GREEN}${SPEC_COUNT}${NC}"
         echo ""
-        
+
         # 检查变更数
         CHANGE_COUNT=$(find "${OPENSPEC_DIR}/changes" -maxdepth 1 -type d 2>/dev/null | wc -l)
         CHANGE_COUNT=$((CHANGE_COUNT - 1))  # 减去 changes 目录自身
         echo -e "活动变更数: ${YELLOW}${CHANGE_COUNT}${NC}"
         echo ""
-        
+
         echo -e "${GREEN}✅ 验证完成！${NC}"
         echo ""
         ;;
-        
+
     q|Q)
         echo ""
         echo -e "${CYAN}感谢使用 OpenSpec 培训系统！${NC}"
@@ -541,7 +541,7 @@ case $choice in
         echo ""
         exit 0
         ;;
-        
+
     *)
         echo ""
         echo -e "${RED}无效选项，请重新运行脚本。${NC}"
@@ -555,4 +555,3 @@ echo -e "${CYAN}═════════════════════�
 echo -e "培训脚本执行完毕。再次运行可选择其他培训阶段。"
 echo -e "${CYAN}═══════════════════════════════════════════════════════════════${NC}"
 echo ""
-

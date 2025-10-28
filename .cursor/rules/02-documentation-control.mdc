@@ -1,0 +1,264 @@
+---
+alwaysApply: true
+---
+## ✅ 允许的文档操作
+
+### 唯一允许创建的文档
+
+1. **项目核心文档**（仅当不存在时）
+   - `README.md` - 项目说明
+   - `CHANGELOG.md` - 变更日志
+   - `CONTRIBUTING.md` - 贡献指南（如需要）
+
+2. **技术规范文档**（放在 `docs/` 目录）
+   - API 文档
+   - 架构设计文档
+   - 数据模型文档
+
+3. **开发日志**（放在 `.cursor/logs/` 目录）
+   - 按日期命名：`YYYY-MM-DD.md`
+   - 每天仅一个文件
+
+---
+
+## 📝 文档更新规则
+
+### 优先更新现有文档
+
+当需要记录信息时，按以下优先级操作：
+
+1. **P0**: 更新 `CHANGELOG.md`
+   ```markdown
+   ## [版本号] - 日期
+   ### 新增/变更/修复
+   - 简要说明
+   ```
+
+2. **P1**: 更新 `README.md` 对应章节
+   - 快速开始
+   - 安装说明
+   - 使用示例
+
+3. **P2**: 添加日志到 `.cursor/logs/development/YYYY-MM/YYYY-MM-DD.md`
+   - 详细的执行记录
+   - 问题和解决方案
+   - 性能数据
+
+4. **P3**: 创建 `docs/` 下的专题文档（仅当必要）
+   - 复杂的技术主题
+   - 需要长期维护的文档
+
+---
+
+## 🗂️ 文档组织原则
+
+### 根目录文档限制
+
+**最多保留 5 个核心文档**:
+1. `README.md` - 项目说明
+2. `CHANGELOG.md` - 变更日志
+3. `AGENTS.md` - AI 助手规范
+4. `.cursorrules` - Cursor 规则（非 Markdown）
+5. `LICENSE` - 许可证（如需要）
+
+**其他所有文档必须放在子目录**:
+- `.cursor/` - Cursor 配置和规范
+- `docs/` - 项目文档
+- `openspec/` - OpenSpec 规范
+- 等等
+
+---
+
+## 🧹 文档清理策略
+
+### 遇到文档过多时
+
+1. **合并相似文档**
+   ```bash
+   # 例如：合并所有"快速开始"到 README.md
+   cat 快速开始_*.md >> README.md
+   rm 快速开始_*.md
+   ```
+
+2. **归档历史文档**
+   ```bash
+   # 移动到 .backup/docs/
+   mv *完成报告*.md .backup/docs/
+   mv *COMPLETE*.md .backup/docs/
+   ```
+
+3. **删除重复内容**
+   - 检查两个文档是否 80%+ 内容相同
+   - 保留信息量最大的版本
+   - 删除其他版本
+
+---
+
+## 📋 文档命名规范
+
+### 允许的命名模式
+
+```
+✅ README.md
+✅ CHANGELOG.md
+✅ docs/api-reference.md
+✅ docs/architecture.md
+✅ .cursor/logs/development/2025-10/2025-10-28.md
+
+❌ 快速开始_XXX.md（太多变体）
+❌ XXX完成报告.md（临时文档）
+❌ 执行完成XXX.md（重复信息）
+❌ 优化完成XXX.txt（应该用 Markdown）
+```
+
+---
+
+## 🎯 AI 助手行为规范
+
+### 当用户要求"创建文档"时
+
+AI 助手必须：
+
+1. **首先询问**
+   ```
+   这个信息是否可以添加到现有文档？
+   - README.md 的某个章节？
+   - CHANGELOG.md？
+   - .cursor/logs/ 的日志？
+   ```
+
+2. **提供建议**
+   ```
+   我建议将这个内容添加到 [现有文档]，而不是创建新文件。
+   这样可以：
+   - 避免文档碎片化
+   - 便于维护
+   - 减少文件数量
+   ```
+
+3. **仅在必要时创建**
+   - 内容超过 500 行
+   - 需要独立维护
+   - 有明确的长期用途
+
+---
+
+## 🚨 违规处理
+
+### 检查命令
+
+```bash
+# 检查根目录文档数量
+ls -1 *.md | wc -l
+
+# 应该 ≤ 5 个
+# 如果 > 5，立即执行清理
+```
+
+### 自动清理脚本
+
+创建 `scripts/cleanup_docs.sh`：
+
+```bash
+#!/bin/bash
+# 清理根目录多余文档
+
+echo "🧹 清理根目录文档..."
+
+# 1. 备份所有 Markdown 文件
+mkdir -p .backup/docs/$(date +%Y%m%d)
+cp *.md .backup/docs/$(date +%Y%m%d)/ 2>/dev/null || true
+
+# 2. 保留核心文档
+KEEP_FILES=(
+    "README.md"
+    "CHANGELOG.md"
+    "AGENTS.md"
+)
+
+# 3. 移动其他文档到 docs/archive/
+mkdir -p docs/archive
+for file in *.md; do
+    if [[ ! " ${KEEP_FILES[@]} " =~ " ${file} " ]]; then
+        mv "$file" docs/archive/
+        echo "   移动: $file → docs/archive/"
+    fi
+done
+
+echo "✅ 清理完成！根目录现在有 $(ls -1 *.md | wc -l) 个文档"
+```
+
+---
+
+## 📊 文档健康检查
+
+### 每周检查清单
+
+- [ ] 根目录文档 ≤ 5 个
+- [ ] CHANGELOG.md 最近 7 天有更新
+- [ ] README.md 与实际项目状态一致
+- [ ] docs/archive/ 中的文档已归档
+- [ ] .cursor/logs/ 按日期组织良好
+
+---
+
+## 💡 最佳实践
+
+### 信息记录决策树
+
+```
+需要记录信息？
+    ↓
+问：是否为变更日志？
+    ├─ 是 → 更新 CHANGELOG.md
+    └─ 否 → 继续
+         ↓
+问：是否为使用说明？
+    ├─ 是 → 更新 README.md
+    └─ 否 → 继续
+         ↓
+问：是否为开发记录？
+    ├─ 是 → 添加到 .cursor/logs/
+    └─ 否 → 继续
+         ↓
+问：是否为技术文档（>500行）？
+    ├─ 是 → 创建 docs/xxx.md
+    └─ 否 → 不创建，添加到现有文档
+```
+
+---
+
+## 🎓 示例
+
+### ❌ 错误做法
+
+```
+用户: 我们完成了依赖清理
+AI: 我创建了以下文档：
+    - 依赖清理完成报告.md
+    - DEPENDENCY_CLEANUP_REPORT.md
+    - 快速开始_清理和配置.md
+    - 执行完成报告_20251028.md
+    - 优化完成清单.txt
+```
+
+### ✅ 正确做法
+
+```
+用户: 我们完成了依赖清理
+AI: 我将在 CHANGELOG.md 中记录这次变更：
+
+## [1.2.0] - 2025-10-28
+### 变更
+- 精简 Node.js 依赖（484MB → 50MB，节省 90%）
+- 统一使用 pyproject.toml 管理 Python 依赖
+
+详细的执行记录已添加到:
+.cursor/logs/development/2025-10/2025-10-28.md
+```
+
+---
+
+**维护者**: HawaiiHub AI Team
+**强制执行**: 所有 AI 助手必须遵守
+**最后更新**: 2025-10-28

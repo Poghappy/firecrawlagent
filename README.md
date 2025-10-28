@@ -66,6 +66,21 @@ python3 test_api_keys.py
 python3 quick_start.py
 ```
 
+### 5. 项目健康检查（⭐ 新增）
+
+```bash
+# 检查项目健康度
+make health
+
+# 运行项目优化
+make optimize
+
+# 完整维护（健康检查 + 优化）
+make maintenance
+```
+
+**详细使用指南**: [QUICK_OPTIMIZATION_GUIDE.md](./QUICK_OPTIMIZATION_GUIDE.md)
+
 ---
 
 ## 📚 文档索引
@@ -74,8 +89,10 @@ python3 quick_start.py
 
 #### P0 - 立即阅读
 
-1. **[QUICK_REFERENCE.md](./QUICK_REFERENCE.md)** - 快速参考指南
-2. **[Firecrawl学习手册/](./Firecrawl学习手册/)** - 完整学习体系
+1. **[QUICK_OPTIMIZATION_GUIDE.md](./QUICK_OPTIMIZATION_GUIDE.md)** ⭐ 新增 - 项目优化快速指南
+2. **[OPTIMIZATION_SUMMARY.md](./OPTIMIZATION_SUMMARY.md)** ⭐ 新增 - 优化总结
+3. **[QUICK_REFERENCE.md](./QUICK_REFERENCE.md)** - 快速参考指南
+4. **[Firecrawl学习手册/](./Firecrawl学习手册/)** - 完整学习体系
    - [快速使用指南](./Firecrawl学习手册/🚀快速使用指南.md)
    - [README](./Firecrawl学习手册/README.md)
 
@@ -92,7 +109,7 @@ python3 quick_start.py
 
 #### P3 - 业务文档
 
-8. **[hawaii_hub_net_agent_运营团队_prd_v_1.md](./hawaii_hub_net_agent_运营团队_prd_v_1.md)** - HawaiiHub 运营团队 PRD
+8. **[hawaii*hub_net_agent*运营团队\_prd_v_1.md](./hawaii_hub_net_agent_运营团队_prd_v_1.md)** - HawaiiHub 运营团队 PRD
 9. **[Ad_Rate_Card.md](./Ad_Rate_Card.md)** - 广告费率卡
 
 ### 📊 报告和总结
