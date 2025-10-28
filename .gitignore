@@ -285,6 +285,10 @@ $RECYCLE.BIN/
 Firecrawl官方文档/
 firecrawl-docs/
 
+# Firecrawl 学习手册中的嵌入仓库
+Firecrawl学习手册/05-实战案例/firecrawl-main-repo/
+Firecrawl学习手册/05-实战案例/示例应用/firecrawl-app-examples/
+
 # HawaiiHub 数据
 内容数据库/
 hawaiihub.net 真实部署克隆源码/

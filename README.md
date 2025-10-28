@@ -1,458 +1,421 @@
-# 🚀 AI 编程工作流程最佳实践 - 完整研究报告
+# 🔥 FireShot - Firecrawl 云 API 实践项目
 
-> **研究日期**: 2025-10-27
-> **用途**: ChatGPT GPTs、Cursor Agent、敏捷开发、PRD 规范
-> **来源**: GitHub 顶级项目 + 行业最佳实践 + 官方文档
-
----
-
-## 📚 文档概览
-
-本研究包含 4 个核心文档，涵盖从理论到实践的完整知识体系：
-
-### 1️⃣ [AI_WORKFLOW_RESEARCH_SUMMARY.md](./AI_WORKFLOW_RESEARCH_SUMMARY.md) - 综合研究报告
-
-- ✅ 核心方法论详解（PRP、Vibe Coding、GHM 等）
-- ✅ 推荐工具与平台（2025 最新）
-- ✅ GitHub 优秀项目精选
-- ✅ PRD 规范与模板
-- ✅ ChatGPT GPTs 创建指南
-- ✅ Cursor Agent 最佳实践
-
-**适合**: 想要全面了解 AI 编程工作流的人
-
-### 2️⃣ [GITHUB_PROJECTS_ANALYSIS.md](./GITHUB_PROJECTS_ANALYSIS.md) - 项目深度分析
-
-- ✅ 顶级项目对比（5 个优秀项目）
-- ✅ 详细功能分析和文件结构
-- ✅ 12 个 Claude 命令详解
-- ✅ 快速启动指南
-- ✅ 实战案例和成功故事
-- ✅ 工具选择决策树
-
-**适合**: 想要深入某个具体项目或工具的人
-
-### 3️⃣ [CURSOR_GPT_TEMPLATES.md](./CURSOR_GPT_TEMPLATES.md) - 配置模板库
-
-- ✅ Cursor .cursorrules 模板（通用全栈、Python FastAPI）
-- ✅ ChatGPT GPTs 配置模板（编码助手、产品经理）
-- ✅ CLAUDE.md 模板（完整项目指南）
-- ✅ 自定义命令模板
-- ✅ 实战案例演示
-
-**适合**: 想要立即开始配置工具的人
-
-### 4️⃣ [QUICK_REFERENCE_GUIDE.md](./QUICK_REFERENCE_GUIDE.md) - 快速参考指南
-
-- ✅ 5 分钟快速启动（3 个常见场景）
-- ✅ 工具对比速查表
-- ✅ 方法论速查
-- ✅ Prompt 模板库（10+个即用模板）
-- ✅ 30 天学习路径
-- ✅ 常见问题速查
-
-**适合**: 需要快速查找答案的人
+> **项目**: FireShot - Firecrawl 云 API 最佳实践和 HawaiiHub 数据采集
+> **更新时间**: 2025-10-27
+> **维护者**: HawaiiHub AI Team
 
 ---
 
-## 🎯 如何使用这些文档
+## 📖 项目简介
 
-### 场景 A：我是完全新手，想从零开始学习
+FireShot 是 HawaiiHub 的数据采集专项项目，基于 **Firecrawl 云 API**，为 HawaiiHub 平台提供强大的网页采集、爬取和数据提取能力。
 
-```markdown
-阅读顺序：
+### 🎯 核心功能
 
-1. 先读本 README 了解全貌
-2. 阅读 QUICK_REFERENCE_GUIDE.md 的"5 分钟快速启动"
-3. 选择"场景 1：快速构建 MVP"并实践
-4. 阅读 AI_WORKFLOW_RESEARCH_SUMMARY.md 理解背后原理
-5. 跟随"30 天学习路径"系统学习
+- ✅ **Scrape**: 单页内容采集，转换为 LLM-ready Markdown
+- ✅ **Crawl**: 深度爬取，自动发现和采集整站内容
+- ✅ **Map**: 快速生成网站结构图
+- ✅ **Search**: 智能搜索互联网内容
+- ✅ **Batch Scrape**: 高效并发处理多个 URL
 
-时间投入：第 1 周每天 1-2 小时
-```
+### 🌐 应用场景
 
-### 场景 B：我有一定经验，想提升效率
-
-```markdown
-阅读顺序：
-
-1. 先读 GITHUB_PROJECTS_ANALYSIS.md 的"顶级项目对比"
-2. 选择最适合你的项目（如 PRPs 或 Structured Workflows）
-3. 从 CURSOR_GPT_TEMPLATES.md 复制配置模板
-4. 使用 QUICK_REFERENCE_GUIDE.md 中的 Prompt 模板
-5. 在实际项目中实践并迭代
-
-时间投入：设置 1 小时 + 实践 1 周
-```
-
-### 场景 C：我要创建团队标准
-
-```markdown
-阅读顺序：
-
-1. 阅读 AI_WORKFLOW_RESEARCH_SUMMARY.md 的"核心方法论"
-2. 选择适合团队的方法（推荐 GHM 用于大团队）
-3. 从 CURSOR_GPT_TEMPLATES.md 定制团队模板
-4. 使用 GITHUB_PROJECTS_ANALYSIS.md 的实战案例培训团队
-5. 建立团队知识库和最佳实践
-
-时间投入：设置 2-3 天 + 持续优化
-```
+- 🏠 夏威夷租房信息采集（Craigslist、本地租房网站）
+- 🍜 餐厅数据爬取（Yelp、华人餐厅网站）
+- 📰 本地新闻采集（Hawaii News Now、Star Advertiser）
+- 🏢 商家信息提取（分类信息网站）
+- 📊 竞品监控（本地华人平台动态追踪）
 
 ---
 
-## ⭐ 核心发现
+## 🚀 快速开始
 
-### 🏆 最佳工作流方法
+### 1. 环境要求
 
-| 方法                     | 适用场景       | 成功率     | 学习曲线 |
-| ------------------------ | -------------- | ---------- | -------- |
-| **Vibe Coding**          | MVP 快速验证   | 87%        | ⭐       |
-| **Structured Workflows** | 日常功能开发   | 80%+       | ⭐⭐     |
-| **PRPs**                 | 生产级关键功能 | 90%+       | ⭐⭐⭐⭐ |
-| **GHM**                  | 企业级团队协作 | 高质量保证 | ⭐⭐⭐⭐ |
+- Python 3.11+
+- Node.js 18+ (可选，用于 MCP 工具)
+- Cursor AI 编辑器（推荐）
 
-### 🛠️ 最佳工具组合
-
-**个人开发者（预算有限）**:
-
-```
-Cline + Gemini CLI + GitHub Copilot Free
-总成本：$0
-能力：完整开发工作流
-```
-
-**专业开发者（平衡性价比）**:
-
-```
-Cursor Pro ($20/月) + Claude API (按需)
-总成本：~$20-30/月
-能力：高效率，高质量
-```
-
-**团队/企业**:
-
-```
-Cursor Pro + Claude Pro + Bolt.new Pro
-总成本：$60/月/人
-能力：最强大和灵活
-```
-
-### 📊 关键数据
-
-- **平均 MVP 时间**: 从 4 周降至 4 小时（Vibe Coding）
-- **成功部署率**: 87%（使用结构化工作流）
-- **代码质量**: 90%+可靠性（使用 PRPs）
-- **学习曲线**: 30 天掌握核心技能
-
----
-
-## 🎁 立即可用资源
-
-### GitHub 项目（已验证）
-
-1. **PRPs-agentic-eng** (1.7k⭐)
-   - 链接: <https://github.com/Wirasm/PRPs-agentic-eng>
-   - 特点: 完整 PRP 方法论 + 12 个 Claude 命令
-   - 适合: 生产级开发
-
-2. **vibe-coding-prompt-template** (78⭐)
-   - 链接: <https://github.com/KhazP/vibe-coding-prompt-template>
-   - 特点: 4 小时 MVP 工作流
-   - 适合: 快速原型
-
-3. **PRD-driven-context-engineering** (3⭐)
-   - 链接: <https://github.com/mattgierhart/PRD-driven-context-engineering>
-   - 特点: 企业级治理框架
-   - 适合: 大型团队
-
-4. **structured-ai-workflows** (Fork)
-   - 链接: <https://github.com/jasonleinart/structured-ai-workflows>
-   - 特点: 跨工具兼容
-   - 适合: Cursor + Claude Code
-
-### 配置模板
-
-所有模板都在 `CURSOR_GPT_TEMPLATES.md` 中：
-
-- ✅ Cursor .cursorrules（通用全栈）
-- ✅ Cursor .cursorrules（Python FastAPI）
-- ✅ ChatGPT GPT（编码助手）
-- ✅ ChatGPT GPT（产品经理）
-- ✅ CLAUDE.md（项目指南）
-
-### Prompt 库
-
-10+个即用模板在 `QUICK_REFERENCE_GUIDE.md`：
-
-- 创建 PRD
-- 生成任务
-- 执行任务
-- 代码审查
-- 性能优化
-- Bug 修复
-- ...更多
-
----
-
-## 🚀 快速开始（选择你的路径）
-
-### 路径 1：今天就要 MVP（最快）
+### 2. 安装依赖
 
 ```bash
-⏱️ 时间：2-4小时
-💰 成本：$0
+# Python 依赖
+pip3 install -r requirements.txt
 
-步骤：
-1. 打开 https://aistudio.google.com/
-2. 从GITHUB_PROJECTS_ANALYSIS.md获取vibe-coding提示
-3. 依次完成：Research → PRD → Tech Design → Build
-4. 在 https://bolt.new/ 生成应用
-5. 部署到Vercel
-
-成功率：87%
+# Node.js 依赖（可选）
+npm install
 ```
 
-### 路径 2：为现有项目添加功能（平衡）
+### 3. 配置环境变量
 
 ```bash
-⏱️ 时间：1-4小时
-💰 成本：$20/月（Cursor）
+# 复制环境变量模板
+cp env.template .env
 
-步骤：
-1. 安装Cursor
-2. 从CURSOR_GPT_TEMPLATES.md复制.cursorrules
-3. 克隆structured-ai-workflows
-4. 使用Prompt: "@create-prd.md 实现[功能]"
-5. 逐任务执行和审查
-
-成功率：80%+
+# 编辑 .env 文件，填入你的 Firecrawl API 密钥
+# FIRECRAWL_API_KEY=fc-xxx
 ```
 
-### 路径 3：生产级关键功能（最可靠）
+### 4. 测试 API
 
 ```bash
-⏱️ 时间：半天到1天
-💰 成本：模型费用
+# 测试 API 密钥
+python3 test_api_keys.py
 
-步骤：
-1. 克隆PRPs-agentic-eng
-2. 复制.claude/commands到项目
-3. 在Claude Code中：/create-base-prp [功能]
-4. 审查PRP，特别是验证循环
-5. /execute-base-prp，运行所有测试
-
-成功率：90%+
+# 运行快速开始示例
+python3 quick_start.py
 ```
 
 ---
 
-## 📖 推荐学习路径
+## 📚 文档索引
 
-### 初学者（0-1 月）
+### 🎓 必读文档（优先级排序）
 
-**第 1 周：基础理解**
+#### P0 - 立即阅读
 
-- 阅读本 README
-- 完成"路径 1"构建一个简单应用
-- 阅读 AI_WORKFLOW_RESEARCH_SUMMARY.md 前 3 章
+1. **[QUICK_REFERENCE.md](./QUICK_REFERENCE.md)** - 快速参考指南
+2. **[Firecrawl学习手册/](./Firecrawl学习手册/)** - 完整学习体系
+   - [快速使用指南](./Firecrawl学习手册/🚀快速使用指南.md)
+   - [README](./Firecrawl学习手册/README.md)
 
-**第 2-4 周：系统学习**
+#### P1 - Cursor 配置
 
-- 跟随 QUICK_REFERENCE_GUIDE.md 的"30 天计划"
-- 每周完成 1 个小项目
-- 建立个人模板库
+3. **[CURSOR_SETUP_SUMMARY.md](./CURSOR_SETUP_SUMMARY.md)** - Cursor 完整设置总结
+4. **[CURSOR_CONFIG_AUDIT.md](./CURSOR_CONFIG_AUDIT.md)** - Cursor 配置审计报告
+5. **[CURSOR_SLASH_COMMANDS_GUIDE.md](./CURSOR_SLASH_COMMANDS_GUIDE.md)** - Slash 命令详解
 
-### 中级（1-3 月）
+#### P2 - Python 开发环境
 
-**第 1 月：深化理解**
+6. **[PYTHON_ENVIRONMENT_SETUP.md](./PYTHON_ENVIRONMENT_SETUP.md)** - Python 完整环境配置
+7. **[SDK_CONFIGURATION_COMPLETE.md](./SDK_CONFIGURATION_COMPLETE.md)** - Firecrawl SDK 配置
 
-- 深入学习 PRPs 方法论
-- 为 Cursor/Claude Code 配置完整环境
-- 实践结构化工作流
+#### P3 - 业务文档
 
-**第 2-3 月：生产实践**
+8. **[hawaii_hub_net_agent_运营团队_prd_v_1.md](./hawaii_hub_net_agent_运营团队_prd_v_1.md)** - HawaiiHub 运营团队 PRD
+9. **[Ad_Rate_Card.md](./Ad_Rate_Card.md)** - 广告费率卡
 
-- 在实际项目中使用 PRPs
-- 贡献到开源项目
-- 创建团队最佳实践
+### 📊 报告和总结
 
-### 高级（3+月）
+10. **[docs/reports/](./docs/reports/)** - 所有项目报告
+    - [PROJECT_CLEANUP_COMPLETE.md](./docs/reports/PROJECT_CLEANUP_COMPLETE.md) - 项目清理完成报告
+    - [CONFIGURATION_SUMMARY.md](./docs/reports/CONFIGURATION_SUMMARY.md) - 完整配置总结
+    - [RESOURCES_SUMMARY.md](./docs/reports/RESOURCES_SUMMARY.md) - 资源总结
+    - [Firecrawl学习手册完整整理报告.md](./docs/reports/Firecrawl学习手册完整整理报告.md)
 
-**持续优化**
+### 🔧 详细指南
 
-- 根据项目类型选择最佳方法
-- 建立团队 AI 工作流标准
-- 分享经验并指导他人
-
----
-
-## 💡 核心洞察
-
-### 1. 上下文为王
-
-```
-成功的AI编程 = 清晰的上下文 + 结构化流程 + 迭代验证
-
-不是依赖AI"魔法"，而是给AI正确的信息：
-- 精确的文件路径和内容
-- 库版本和文档
-- 已知问题和边缘情况
-- 可执行的验证步骤
-```
-
-### 2. 分步验证胜过一次性完成
-
-```
-❌ 坏方法：
-"构建整个认证系统"
-→ 结果：可能大规模返工
-
-✅ 好方法：
-Task 1.1: 数据库schema
-审查 → 批准 ↓
-Task 1.2: API端点
-审查 → 批准 ↓
-Task 1.3: 前端集成
-审查 → 批准 ↓
-
-→ 结果：每步可控，容易调试
-```
-
-### 3. 工具组合使用
-
-```
-不同任务用不同工具：
-
-快速原型 → Bolt.new
-日常开发 → Cursor
-复杂重构 → Claude Code
-文档规划 → ChatGPT GPT
-
-不要试图用一个工具做所有事
-```
+11. **[docs/cursor-guides/](./docs/cursor-guides/)** - Cursor 详细指南集合
+12. **[docs/analysis/](./docs/analysis/)** - AI 工作流研究报告
+13. **[docs/guides/](./docs/guides/)** - 通用开发指南
 
 ---
 
-## 🎯 下一步行动
+## 🔑 核心配置
 
-### 立即行动（今天）
+### 环境变量
 
-1. [ ] 选择一个快速启动路径
-2. [ ] 复制相关配置模板
-3. [ ] 完成第一个小功能/项目
+项目使用 `.env` 文件管理敏感信息：
 
-### 本周行动
+```bash
+# 必需配置
+FIRECRAWL_API_KEY=fc-xxx              # 主 API 密钥
+FIRECRAWL_API_KEY_BACKUP_1=fc-xxx     # 备用密钥 1
+FIRECRAWL_API_KEY_BACKUP_2=fc-xxx     # 备用密钥 2
+FIRECRAWL_API_KEY_BACKUP_3=fc-xxx     # 备用密钥 3
 
-1. [ ] 阅读完整研究报告
-2. [ ] 设置完整开发环境
-3. [ ] 实践 3 个不同场景
+# 可选配置
+FIRECRAWL_API_URL=https://api.firecrawl.dev
+FIRECRAWL_TIMEOUT=60
+FIRECRAWL_MAX_RETRIES=3
+FIRECRAWL_DAILY_BUDGET=10.0
+```
 
-### 本月行动
+### Cursor AI 规则
 
-1. [ ] 完成 30 天学习计划的第 1 周
-2. [ ] 建立个人模板库
-3. [ ] 分享经验给团队/社区
+项目使用 `.cursorrules` 文件定义 AI 助手行为规范：
 
----
-
-## 🤝 贡献和反馈
-
-### 发现问题？
-
-如果你发现文档中有错误或过时信息，请：
-
-- 提交 Issue
-- 或直接提供更正
-
-### 有改进建议？
-
-如果你有更好的：
-
-- 工具推荐
-- 工作流方法
-- 实战案例
-
-欢迎分享！
-
-### 想要参与？
-
-如果你：
-
-- 成功使用这些方法
-- 有独特的使用案例
-- 创建了有用的模板
-
-我们很乐意听到你的故事！
+- 🇨🇳 强制简体中文输出
+- 🐍 Python 代码规范（类型注解、文档字符串、Ruff 格式化）
+- 🔥 Firecrawl 最佳实践
+- 💰 成本控制和缓存策略
+- 🔒 安全规范（API 密钥管理）
 
 ---
 
-## 📊 更新日志
+## 📂 项目结构
 
-### 2025-10-27 - 初始版本
-
-- ✅ 完成深度网络搜索（5 个主题，40+结果）
-- ✅ 分析 4 个顶级 GitHub 项目
-- ✅ 创建 4 个核心文档（总计~30,000 字）
-- ✅ 提供 100+个即用资源
-- ✅ 包含实战案例和模板
+```
+FireShot/
+├── README.md                           # 📖 项目总览（本文件）
+├── CHANGELOG.md                        # 📝 变更日志
+├── QUICK_REFERENCE.md                  # ⚡ 快速参考
+│
+├── .cursorrules                        # 🎯 Cursor AI 规则
+├── .env                                # 🔐 环境变量（不提交到 Git）
+├── env.template                        # 📋 环境变量模板
+│
+├── requirements.txt                    # 📦 Python 依赖
+├── package.json                        # 📦 Node.js 依赖
+├── pyproject.toml                      # ⚙️ Python 项目配置
+│
+├── quick_start.py                      # 🚀 快速开始示例
+├── setup_sdk.py                        # 🔧 SDK 配置脚本
+├── test_api_keys.py                    # 🔑 API 密钥测试
+│
+├── Firecrawl学习手册/                   # 📚 完整学习资料
+│   ├── README.md
+│   ├── 🚀快速使用指南.md
+│   ├── 00-手册导读/
+│   ├── 01-快速入门/
+│   ├── 02-核心功能/
+│   ├── 03-高级特性/
+│   ├── 04-最佳实践/
+│   └── 05-实战案例/
+│
+├── docs/                               # 📚 文档目录
+│   ├── cursor-guides/                  # Cursor 指南
+│   ├── analysis/                       # 分析报告
+│   ├── guides/                         # 通用指南
+│   ├── reports/                        # 项目报告
+│   └── setup/                          # 设置文档
+│
+├── scripts/                            # 🔧 工具脚本
+│   └── check_docs_sync.py
+│
+├── templates/                          # 📋 代码模板
+│   └── python/
+│
+├── tests/                              # 🧪 测试文件
+│   └── __init__.py
+│
+└── hawaiihub-admin-agent/              # 🎯 HawaiiHub 管理子项目
+```
 
 ---
 
-## 📞 资源链接
+## 🛠️ 开发工具
 
-### 官方文档
+### Python 工具链
 
-- [Cursor](https://cursor.sh/docs)
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code)
-- [OpenAI Platform](https://platform.openai.com/docs)
+- **Ruff**: 格式化 + Linting（替代 Black/flake8/isort）
+- **mypy**: 严格类型检查
+- **pytest**: 测试框架
+- **Pylance**: 智能代码补全
 
-### 社区
+### Cursor 配置
 
-- [Reddit: r/cursor](https://reddit.com/r/cursor)
-- [Reddit: r/ChatGPTPromptGenius](https://reddit.com/r/ChatGPTPromptGenius)
-- [Discord: Cursor Community](https://discord.gg/cursor)
+项目已完成专业级 Cursor 配置：
 
-### 视频教程
+- ✅ 完整的规则体系（`.cursorrules`）
+- ✅ 安全的自动批准配置
+- ✅ 强制简体中文输出
+- ✅ Slash Commands 集成
 
-- [PRPs 完整演示](https://www.youtube.com/watch?v=KVOZ9s1S9Gk)
-- [Cursor VP Demo](https://www.youtube.com/watch?v=8QN23ZThdRY)
-- [How I AI Podcast](https://www.youtube.com/watch?v=fD4ktSkNCw4)
+详见 [CURSOR_SETUP_SUMMARY.md](./CURSOR_SETUP_SUMMARY.md)
+
+---
+
+## 📖 使用示例
+
+### 示例 1：爬取单个网页
+
+```python
+from firecrawl import FirecrawlApp
+import os
+
+# 初始化 Firecrawl
+app = FirecrawlApp(api_key=os.getenv("FIRECRAWL_API_KEY"))
+
+# 爬取网页
+result = app.scrape(
+    url="https://example.com",
+    formats=["markdown"],
+    only_main_content=True
+)
+
+print(result.markdown)
+```
+
+### 示例 2：批量爬取
+
+```python
+urls = [
+    "https://example.com/page1",
+    "https://example.com/page2",
+    "https://example.com/page3",
+]
+
+results = app.batch_scrape(
+    urls=urls,
+    formats=["markdown"]
+)
+
+for result in results:
+    print(result.markdown)
+```
+
+### 示例 3：搜索夏威夷新闻
+
+```python
+results = app.search(
+    query="Hawaii housing rental",
+    sources=[{"type": "web"}],
+    limit=10,
+    scrapeOptions={"formats": ["markdown"]}
+)
+
+for item in results:
+    print(item.markdown)
+```
+
+更多示例见 [Firecrawl学习手册/05-实战案例/](./Firecrawl学习手册/05-实战案例/)
+
+---
+
+## 💰 成本控制
+
+### API 使用策略
+
+1. **缓存优先**: 使用 `max_age` 参数，避免重复爬取
+2. **批量处理**: 使用 `batch_scrape` 而非逐个爬取
+3. **密钥轮换**: 配置多个 API 密钥，避免速率限制
+4. **预算监控**: 设置每日预算上限
+
+```python
+# 使用缓存（2天有效期，可节省 50%+ 成本）
+result = app.scrape(
+    url="https://example.com",
+    formats=["markdown"],
+    max_age=172800000  # 2天缓存
+)
+```
+
+详见 [docs/cursor-guides/cost-control.md](./docs/cursor-guides/cost-control.md)
+
+---
+
+## 🔒 安全规范
+
+### API 密钥管理
+
+❌ **禁止**：硬编码 API 密钥
+
+```python
+# ❌ 永远不要这样做
+api_key = "fc-xxxx"
+```
+
+✅ **正确**：使用环境变量
+
+```python
+# ✅ 使用环境变量
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+api_key = os.getenv("FIRECRAWL_API_KEY")
+```
+
+### Git 安全
+
+`.env` 文件已添加到 `.gitignore`，不会提交到 Git。
+
+---
+
+## 🤝 贡献指南
+
+### Git 提交规范
+
+使用 [Conventional Commits](https://www.conventionalcommits.org/)：
+
+```bash
+feat(scraper): 添加 Firecrawl MCP 工具支持
+fix(parser): 修复文章日期解析错误
+docs(api): 更新 API 密钥配置指南
+refactor(storage): 优化数据存储格式
+perf(cache): 实现 Redis 缓存机制
+```
+
+### 代码规范
+
+- Python: 遵循 `.cursorrules` 中的规范
+- 类型注解: 所有函数必须有完整类型注解
+- 文档字符串: 使用简体中文编写
+- 测试: 使用 pytest，测试覆盖率 >80%
+
+---
+
+## 📊 项目状态
+
+### 当前版本
+
+- **项目版本**: v1.0.0
+- **Firecrawl SDK**: v2.x
+- **Python**: 3.11+
+- **Node.js**: 18+
+
+### 完成度
+
+- ✅ 环境配置 (100%)
+- ✅ SDK 集成 (100%)
+- ✅ Cursor 配置 (100%)
+- ✅ 文档体系 (100%)
+- 🔄 示例应用 (进行中)
+- 🔄 HawaiiHub 集成 (进行中)
+
+### 最近更新
+
+查看 [CHANGELOG.md](./CHANGELOG.md) 获取完整变更历史。
+
+---
+
+## 📞 获取帮助
+
+### 遇到问题？
+
+1. **查看文档**: 优先查看 [Firecrawl学习手册/](./Firecrawl学习手册/)
+2. **运行诊断**: `python3 test_api_keys.py`
+3. **查看日志**: 检查错误信息
+4. **官方资源**:
+   - 📖 [Firecrawl 文档](https://docs.firecrawl.dev/)
+   - 💬 [Discord 社区](https://discord.gg/firecrawl)
+   - 🐛 [GitHub Issues](https://github.com/mendableai/firecrawl/issues)
+
+### 相关项目
+
+- 🌐 [HawaiiHub](./hawaiihub-admin-agent/) - 主网站项目
+- 🔥 [Firecrawl 官方](https://github.com/mendableai/firecrawl) - 上游项目
+
+---
+
+## 📄 许可证
+
+MIT License
 
 ---
 
 ## 🙏 致谢
 
-特别感谢以下项目和作者的开源贡献：
+特别感谢：
 
-- **Wirasm** - PRPs-agentic-eng
-- **KhazP** - vibe-coding-prompt-template
-- **mattgierhart** - PRD-driven-context-engineering
-- **jasonleinart** - structured-ai-workflows
-
-以及所有 AI 编程社区的贡献者！
-
----
-
-## 📄 许可
-
-本研究报告基于公开可用的信息编译，遵循各原始项目的许可证。
-
-所有原创内容（模板、分析、总结）采用 **MIT License**。
+- [Firecrawl](https://firecrawl.dev/) - 提供强大的云 API 服务
+- [Mendable AI](https://mendable.ai/) - Firecrawl 开发团队
+- HawaiiHub AI Team - 项目维护团队
 
 ---
 
 <div align="center">
 
-## 🎉 现在就开始你的 AI 编程之旅吧！
+## 🎉 开始使用 FireShot！
 
-**选择一个场景 → 复制模板 → 开始构建**
+**[快速开始](#-快速开始)** | **[文档索引](#-文档索引)** | **[示例代码](#-使用示例)**
 
-记住：从简单开始，持续迭代，记录经验！
+记住：优先使用 MCP 工具，合理控制成本，保护 API 密钥安全！
 
 ---
 
-Made with ❤️ for the AI coding community
+Made with ❤️ by HawaiiHub AI Team
 
 最后更新：2025-10-27
 
