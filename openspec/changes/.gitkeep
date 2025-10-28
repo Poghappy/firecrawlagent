@@ -1,0 +1,10 @@
+# 变更目录
+
+此目录用于存放待实施的 OpenSpec 变更提案。
+
+## 使用方法
+
+1. 让 AI 创建变更提案：`/openspec:proposal <功能描述>`
+2. 审查提案：`openspec show <变更名称>`
+3. 实施变更：`/openspec:apply <变更名称>`
+4. 归档完成：`openspec archive <变更名称> --yes`
